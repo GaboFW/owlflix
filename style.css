@@ -6,6 +6,8 @@
 body {
     margin: 0;
     font-family: 'Open Sans';
+    position: relative;
+    min-height: 100hv;
 }
 
 /* Header */
@@ -25,6 +27,7 @@ body {
     margin-right: auto;
 
     list-style: none;
+    text-decoration: none;
     color: white;
 }
 
@@ -42,9 +45,13 @@ body {
     font-size: 1em;
     transition: color 0.3s;
 }
-
 .navegacion a:hover {
     color: #dcdcdc;
+}
+
+.navegacion a.active {
+    color: var(--checkNav);
+    font-weight: bold;
 }
 
 .userIcon {
@@ -55,23 +62,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-/* Peliculas/Series */
-.parent {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-
-    border: red solid 1px;
-}
-    
-.div1 {
-    grid-area: 1 / 1 / 6 / 5;
-
-    border: red solid 1px;
 }
 
 /* Contactos */
@@ -86,7 +76,7 @@ body {
     border-radius: 10px;
 }
 
-#contacto {
+#formContacto {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -97,11 +87,11 @@ body {
     font-size: 1.563rem;
 }
 
-#contacto text {
-    margin-bottom: 10px;
+#formContacto text {
+    margin: 0 0 10px 10px;
 }
 
-#contacto input {
+#formContacto input {
     width: 100%;
     height: 50px;
     color: white;
@@ -111,11 +101,8 @@ body {
     border: 1px solid white;
     font-size: large;
 }
-#contacto input::placeholder {
-    color: var(--checkNav);
-}
 
-#contacto textarea {
+#formContacto textarea {
     width: 100%;
     color: white;
     margin: 5px;
@@ -124,12 +111,13 @@ body {
     font-size: large;
     resize: none;
 }
-#contacto textarea::placeholder {
-    font: 'Open Sans';
+
+#formContacto input::placeholder,
+#formContacto textarea::placeholder {
     color: var(--checkNav);
 }
 
-#contacto button {
+#formContacto button {
     width: 100%;
     height: 3.11rem;
     border-radius: 12px;
@@ -138,10 +126,33 @@ body {
     background-color: var(--checkNav);
     margin-top: 5px;
 }
-#contacto button:hover {
+
+#formContacto button:hover {
     background-color: #16b064;
 }
-#contacto button:active {
+
+#formContacto button:active {
     background-color: #149652;
     transform: scale(0.98);
+}
+
+/* About */
+.mainAbout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#aboutUs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0 0 0 20px;
+    max-width: 50vw;
+}
+
+#aboutUs p {
+    text-align: left;
+    margin: 10px 0;
 }
