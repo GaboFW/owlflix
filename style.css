@@ -1,0 +1,147 @@
+:root {
+    --colorMain: #183949;
+    --checkNav: #1ce783;
+}
+
+body {
+    margin: 0;
+    font-family: 'Open Sans';
+}
+
+/* Header */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--colorMain);
+    color: white;
+    padding: 10px 40px;
+    margin-bottom: 10px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-right: auto;
+
+    list-style: none;
+    color: white;
+}
+
+.navegacion {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    margin-right: 100px;
+    font-size: 1.563rem;
+}
+
+.navegacion a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+.navegacion a:hover {
+    color: #dcdcdc;
+}
+
+.userIcon {
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Peliculas/Series */
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    border: red solid 1px;
+}
+    
+.div1 {
+    grid-area: 1 / 1 / 6 / 5;
+
+    border: red solid 1px;
+}
+
+/* Contactos */
+.mainContacto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: var(--colorMain);
+    border-radius: 10px;
+}
+
+#contacto {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: var(--colorMain);
+    color: white;
+    font-size: 1.563rem;
+}
+
+#contacto text {
+    margin-bottom: 10px;
+}
+
+#contacto input {
+    width: 100%;
+    height: 50px;
+    color: white;
+    border-radius: 20px;
+    margin: 5px;
+    background-color: var(--colorMain);
+    border: 1px solid white;
+    font-size: large;
+}
+#contacto input::placeholder {
+    color: var(--checkNav);
+}
+
+#contacto textarea {
+    width: 100%;
+    color: white;
+    margin: 5px;
+    background-color: var(--colorMain);
+    border: 1px solid white;
+    font-size: large;
+    resize: none;
+}
+#contacto textarea::placeholder {
+    font: 'Open Sans';
+    color: var(--checkNav);
+}
+
+#contacto button {
+    width: 100%;
+    height: 3.11rem;
+    border-radius: 12px;
+    color: black;
+    font-size: 1.25rem;
+    background-color: var(--checkNav);
+    margin-top: 5px;
+}
+#contacto button:hover {
+    background-color: #16b064;
+}
+#contacto button:active {
+    background-color: #149652;
+    transform: scale(0.98);
+}
