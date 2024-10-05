@@ -5,6 +5,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../style.css">
+    <script src="../Js/scriptDetallesSerie.js"></script>
     <title>TP 1</title>
 </head>
 
@@ -27,7 +28,7 @@
                     <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                         <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="peliculas.html">Peliculas</a></li>
                         <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="series.html">Series</a></li>
-                        <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text active" href="miembros.html">Miembros</a></li>
+                        <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="miembros.html">Miembros</a></li>
                         <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="about.html">About</a></li>
                         <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="contacto.html">Contacto</a></li>
                     </ul>
@@ -45,47 +46,15 @@
         </div>
     </nav>
 </header>
-
-<main class="mainMiembros">
-    <div>
-        <h2>Hacete Miembro</h2>
-        <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido
-            el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona
-            que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró
-            hacer un libro de textos especimen.</p>
+<!-- AGREGAR TODOS LOS ESTILOS!! -->
+<main>
+    <div id="serieDetalles">
+        <h1 id="tituloSerie"></h1>
+        <img id="posterSerie" alt="Poster de la serie">
+        <p id="descripcionSerie"></p>
+        <p id="temporadas"></p>
+        <p id="generos">Generos: </p>
     </div>
-
-    <section class="containerMiembros d-flex justify-content-center flex-wrap">
-        <div class="card" style="width: 18rem;">
-            <img src="../Imagenes/Logo.png" alt="Logo">
-            <div>
-                <h3>MIEMBRO 1</h3>
-                <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</p>
-                <h3>$1.000 ARS</h3>
-                <button>Hacete Miembro</button>
-            </div>
-        </div>
-
-        <div class="card" style="width: 18rem;">
-            <img src="../Imagenes/Logo.png" alt="Logo">
-            <div>
-                <h3>MIEMBRO 2</h3>
-                <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</p>
-                <h3>$2.000 ARS</h3>
-                <button>Hacete Miembro</button>
-            </div>
-        </div>
-
-        <div class="card" style="width: 18rem;">
-            <img src="../Imagenes/Logo.png" alt="Logo">
-            <div>
-                <h3>MIEMBRO 3</h3>
-                <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</p>
-                <h3>$3.000 ARS</h3>
-                <button>Hacete Miembro</button>
-            </div>
-        </div>
-    </section>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

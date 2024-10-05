@@ -5,19 +5,14 @@
 
 body {
     margin: 0;
-    font-family: 'Open Sans';
+    font-family: "Open Sans";
     position: relative;
     min-height: 100hv;
 }
 
-/* Header */
+/* HEADER */
 .navbar {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
     background-color: var(--colorMain);
-    color: white;
-    padding: 10px 40px;
     margin-bottom: 10px;
 }
 
@@ -26,104 +21,70 @@ body {
     height: 120px;
 }
 
-.navegacion {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-    font-size: 3vh;
+.navbar-nav .nav-link {
+    color: white !important;
 }
 
-.navegacion a {
-    color: white;
-    text-decoration: none;
-    font-size: 1em;
-    transition: color 0.3s;
+.nav-link:hover {
+    color: #dcdcdc !important;
 }
 
-.navegacion a:hover {
-    color: #dcdcdc;
+.nav-link.active {
+    color: var(--verdeMain) !important;
 }
 
-.navegacion a.active {
-    color: var(--verdeMain);
+.navbar-toggler {
+    background-color: white;
+    color: var(--colorMain);
+}
+
+.offcanvas-body,
+.offcanvas-header {
+    background-color: var(--colorMain);
+}
+
+.btn-close {
+    background-color: white;
 }
 
 .userIcon {
-    width: 20px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
 }
 
-/* Contactos */
-.mainContacto {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-#formContacto {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+/* Contacto */
+.contact-form {
+    background-color: var(--colorMain);
     padding: 20px;
-    box-sizing: border-box;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+    color: white;
+}
+
+.form-control {
     background-color: var(--colorMain);
     color: white;
-    font-size: 25px;
-    border-radius: 20px;
+    border-radius: 10px;
+    resize: none !important;
 }
 
-#formContacto text {
-    margin: 0 0 10px 10px;
-}
-
-#formContacto input {
-    width: 100%;
-    height: 50px;
-    color: white;
-    border-radius: 20px;
-    margin: 5px;
-    background-color: var(--colorMain);
-    border: 1px solid white;
-    font-size: large;
-}
-
-#formContacto textarea {
-    width: 100%;
-    color: white;
-    margin: 5px;
-    background-color: var(--colorMain);
-    border: 1px solid white;
-    font-size: large;
-    resize: none;
-}
-
-#formContacto input::placeholder,
-#formContacto textarea::placeholder {
+.form-control::placeholder {
     color: var(--verdeMain);
-    padding: 10px;
 }
 
-#formContacto button {
-    width: 100%;
-    height: 3.11rem;
-    border-radius: 12px;
-    color: black;
-    font-size: 1.25rem;
+.form-control:focus {
+    background-color: var(--colorMain);
+    color: white;
+}
+
+.btn-submit {
     background-color: var(--verdeMain);
-    margin: 5px 0 5px 5px;
+    color: black;
 }
 
-#formContacto button:hover {
-    background-color: #16b064;
-}
-
-#formContacto button:active {
+.btn-submit:hover {
     background-color: #149652;
     transform: scale(0.98);
 }
@@ -132,7 +93,11 @@ body {
 .mainAbout {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    flex-wrap: nowrap;
+}
+
+.mainAbout figure {
+    border: 1px solid black;
 }
 
 #aboutUs {
@@ -144,29 +109,104 @@ body {
     max-width: 50vw;
 }
 
-#aboutUs p {
-    text-align: left;
-    margin: 10px 0;
-}
-
 /* Miembros */
-.mainMiembros section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+.containerMiembros {
+    gap: 20px;
 }
 
-.mainMiembros section img {
-    width: 300px;
-    height: auto;
-}
-
-.mainMiembros section .miembro {
-    width: 300px;
-    height: 1000px;
+.containerMiembros .card {
     background-color: var(--colorMain);
+    border: 2px solid var(--verdeMain);
+    border-radius: 10px;
+    padding: 20px;
     color: white;
-
-    border: red solid 1px;
 }
+
+.containerMiembros .card img {
+    margin-bottom: 10px;
+}
+
+.containerMiembros .card button {
+    background-color: var(--verdeMain);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.containerMiembros .card button:hover {
+    background-color: #16b064;
+}
+
+/* Series - Peliculas */
+#peliculasContainer,
+#seriesContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    margin: 20px 20px;
+}
+
+.poster {
+    position: relative;
+    width: 180px;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.poster img {
+    width: 100%;
+    display: block;
+}
+
+.poster .titulo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    opacity: 0;
+    font-size: 1em;
+}
+
+.poster:hover .titulo {
+    opacity: 1;
+}
+
+.poster:hover img {
+    opacity: 0.5;
+}
+
+.paginacion {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#btnAnterior,
+#btnSiguiente {
+    width: 150px;
+    height: 40px;
+    background-color: var(--verdeMain);
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid rgb(70, 66, 66);
+}
+
+#btnAnterior:active,
+#btnSiguiente:active,
+#btnAnterior:hover,
+#btnSiguiente:hover {
+    background-color: #149652;
+    transform: scale(0.98);
+}
+
+/* Detalle Peliculas */
 
