@@ -48,7 +48,7 @@ function crearCarta(titulo, imgUrl, id) {
     return card;
 }
 
-const cargarSeries = async () => {
+async function cargarSeries() {
     const container = $("seriesContainer");
     
     while (container.firstChild) {
