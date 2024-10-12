@@ -1,0 +1,11 @@
+NOMBRE Y CONTACTO
+Documentacion de Interfaz
+Carrito - Info del producto, total de los productos, forma de paga claro
+Boton para Comprar Peliculas/Series
+Login
+Contacto??
+Filtrar por Nombre
+MEJORAR RESPONSIVE (About, Contacto, Miembros)
+INVENTAR INFORMACION RANDOM!!!
+    +info... - About 
+Diseño de las pelis/series, Detalles de pelis/series
