@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +5,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <title>Cuevana Chino</title>
 </head>
 
@@ -16,14 +13,14 @@
     <header>
         <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container-fluid">
-                <a class="navbar-brand ms-auto" href="index.html">
-                    <img src="Imagenes/Logo123.png" alt="Logo" class="navbar-logo">
+                <a class="navbar-brand ms-auto" href="../index.html">
+                    <img src="../Imagenes/Logo123.png" alt="Logo" class="navbar-logo">
                 </a>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                            <img src="Imagenes/Logo123.png" alt="Logo" class="navbar-logo">
+                            <img src="../Imagenes/Logo123.png" alt="Logo" class="navbar-logo">
                         </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                             aria-label="Open Sans"></button>
@@ -45,10 +42,10 @@
                     </div>
                     <div id="results"></div>
                 
-                    <img src="Imagenes/Carrito.png" alt="Carrito" class="ms-3">
+                    <img src="../Imagenes/Carrito.png" alt="Carrito" class="ms-3">
                 
                     <div class="userIcon ms-3">
-                        <img src="Imagenes/UserIcon.png" alt="UserIcon">
+                        <img src="../Imagenes/UserIcon.png" alt="UserIcon">
                     </div>
                 
                     <button class="navbar-toggler ms-3" type="button" data-bs-toggle="offcanvas"
@@ -61,61 +58,14 @@
     </header>
 
     <main>
-        <div id="home">
-            <img src="Imagenes/Home.png" class="img-fluid">
-            <div id="textoHome">
-                <p>Las mejores peliculas y series desde tu casa</p>
-            </div>
-        </div>
-
-        <div class="d-flex justify-content-center flex-nowrap flex-row">
-            <div id="fondoNecesitamos" class="d-flex">
-                <div id="ImgNecesitamos">
-                    <img src="Imagenes/Te necesitamos.png" alt="Te Necesitamos">
-                </div>
-                <div id="textoNecesitamos">
-                    <h2>Te necesitamos</h2>
-                    <p>Esta pagina se sostiene con la colaboracion de sus usuarios.</p>
-                    <p>Elegi una de las opciones predeterminadas y ayudanos a mantener el contenido</p>
-                    <div>
-                        <button class="btn btn-primary"><a href="Paginas/miembros.html">Hacete Miembro</a></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="amantesPeliculas">
-            <p class="fs-2">Para los amantes de las peliculas</p>
-            <!-- PLANTILLA CON ALGUNAS PELICULAS - TEMPLATES?? -->
-        </div>
-
-        <div id="maratonearSeries">
-            <p class="fs-2">Las mejores series para maratonear</p>
-            <!-- PLANTILLA CON ALGUNAS SERIES - TEMPLATES?? -->
-        </div>
-
-        <div id="finHome" class="d-flex justify-content-between">
-            <div class="card cardHome">
-                <img src="Imagenes/FAQ's.png" alt="Imagen de FAQ">
-                <div class="faq-contacto">
-                    <h3>Conocé todo lo que podés hacer en la web</h3>
-                    <a class="fs-5 text" href="Paginas/faq.html">FAQs</a>
-                </div>
-            </div>
-            <div class="card cardHome">
-                <img src="Imagenes/Contactanos.png" alt="Imagen de Contacto">
-                <div class="faq-contacto">
-                    <h3>¿Problemas con el contenido?</h3>
-                    <a class="fs-5 text" href="Paginas/contacto.html">Contactanos</a>
-                </div>
-            </div>
+        <h1 id="resBusq">Resultados de búsqueda</h1>
+        <div id="resultadosBusqueda" class="containerBusqueda mt-4">
+            
         </div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-
     <script src="Js/scriptHomeBusqueda.js"></script>
+    <script src="Js/scriptBusqueda.js"></script>
+    <script src="Js/scriptDetallesPelicula.js"></script>
+    <script src="Js/scriptDetallesSerie.js"></script>
 </body>
-</html>
