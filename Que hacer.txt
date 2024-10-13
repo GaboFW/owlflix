@@ -4,8 +4,10 @@ Carrito - Info del producto, total de los productos, forma de paga claro
 Boton para Comprar Peliculas/Series
 Login
 Contacto??
-Filtrar por Nombre
+
+Filtrar por Nombre - ARREGLAR ESTILOS!!
+
 MEJORAR RESPONSIVE (About, Contacto, Miembros)
 INVENTAR INFORMACION RANDOM!!!
-    +info... - About 
+    +info... - About
 Diseño de las pelis/series, Detalles de pelis/series

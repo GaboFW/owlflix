@@ -102,10 +102,7 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: nowrap;
-}
-
-.mainAbout figure {
-    border: 1px solid black;
+    color: white;
 }
 
 #aboutUs {
@@ -118,6 +115,10 @@ body {
 }
 
 /* Miembros */
+.mainMiembros {
+    color: white;
+}
+
 .containerMiembros {
     gap: 20px;
 }
@@ -148,6 +149,11 @@ body {
 }
 
 /* Series - Peliculas */
+.mainPeliculas h2,
+.mainSeries h2 {
+    color: white;
+}
+
 #peliculasContainer,
 #seriesContainer {
     display: flex;
@@ -229,8 +235,6 @@ body {
 #posterPelicula {
     width: 300px;
     height: auto;
-
-    border: 2px solid red;
 }
 
 

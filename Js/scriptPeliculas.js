@@ -61,7 +61,6 @@ async function cargarPeliculas() {
 
         for (const pelicula of data.results) {
             const poster = crearCarta(pelicula.title, `https://image.tmdb.org/t/p/w500${pelicula.poster_path}`, pelicula.id);
-            // console.log(pelicula.id);
 
             container.appendChild(poster);
         }
