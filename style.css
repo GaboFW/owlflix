@@ -330,15 +330,11 @@ body {
 #amantesPeliculas,
 #maratonearSeries {
     width: 100%;
-    height: 550px;
+    height: 425px;
     color: white;
     background-color: var(--colorMain);
     margin: 10px auto;
 }
-
-/* .imgSlider {
-    width: 300px;
-} */
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
