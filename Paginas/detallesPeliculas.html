@@ -56,13 +56,18 @@
 </header>
 
 <main>
-    <div id="peliculaDetalles">
-        <img id="posterPelicula" alt="Poster de la película">
-        <div>
-            <h1 id="tituloPelicula"></h1>
-            <p id="descripcionPelicula"></p>
-            <p id="fechaLanzamiento"></p>
-            <p id="generos">Generos: </p>
+    <div class="containerDetallesPeliculas containerDivImg mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <img id="posterPelicula" alt="Poster de la película" class="img-fluid rounded">
+                <button class="btn btn-primary mt-3 btn-precio"></button>
+            </div>
+            <div class="col-md-8">
+                <h1 id="tituloPelicula" class="mb-3"></h1>
+                <p>Fecha de lanzamiento: <span id="fechaLanzamiento"></span></p>
+                <p>Sinopsis: <span id="descripcionPelicula"></span></p>
+                <p>Géneros: <span id="generos"></span></p>
+            </div>
         </div>
     </div>
 </main>

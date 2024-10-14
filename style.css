@@ -224,7 +224,6 @@ body {
 }
 
 /* Detalle Peliculas - Series */
-/* TERMINA!! */
 #serieDetalles,
 #peliculaDetalles {
     display: flex;
@@ -232,13 +231,54 @@ body {
     margin: 20px 0 0 20px;
 }
 
+.containerDetallesPeliculas,
+.containerDetallesSeries {
+    font-weight: bold;
+}
+
 #posterSerie,
 #posterPelicula {
     width: 300px;
     height: auto;
+    border-radius: 10px;
 }
-/* TERMINA!! */
 
+.containerDetallesPeliculas,
+.containerDetallesSeries{
+    color: var(--letraMain);
+    max-width: 1200px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.containerDivImg{
+    color: var(--letraMain);
+}
+
+.btn-precio {
+    width: 80%;
+    border-radius: 5px;
+    cursor: pointer;
+    content: "$5";
+    transition: background-color 0.3s ease;
+}
+
+.btn-precio:hover {
+    background-color: #218838;
+}
+
+.btn-precio:hover::after {
+    content: "Agregar al carrito";
+    color: black;
+}
+
+.btn-precio::before {
+    content: "$5 ";
+    color: black;
+}
 
 /* HOME */
 #home {
@@ -290,10 +330,19 @@ body {
 #amantesPeliculas,
 #maratonearSeries {
     width: 100%;
-    height: 300px;
+    height: 550px;
     color: white;
     background-color: var(--colorMain);
     margin: 10px auto;
+}
+
+/* .imgSlider {
+    width: 300px;
+} */
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black;
 }
 
 #amantesPeliculas p,
@@ -359,10 +408,10 @@ body {
 }
 
 .mainPreguntasFrecuentes{
-    color: whitesmoke;
+    color: var(--letraMain);
 }
 
-/* busqueda */
+/* Busqueda */
 #resBusq {
     color: var(--letraMain);
     margin-left: 20px;

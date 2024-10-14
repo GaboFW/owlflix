@@ -56,13 +56,19 @@
 </header>
 
 <main>
-    <div id="serieDetalles">
-        <img id="posterSerie" alt="Poster de la Serie">
-        <div>
-            <h1 id="tituloSerie"></h1>
-            <p id="descripcionSerie"></p>
-            <p id="temporadas"></p>
-            <p id="generos">Generos: </p>
+    <div class="containerDetallesSeries containerDivImg mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <img id="posterSerie" alt="Poster de la Serie" class="img-fluid rounded">
+                <button class="btn btn-primary mt-3 btn-precio"></button>
+            </div>
+            <div class="col-md-8">
+                <h1 id="tituloSerie" class="mb-3"></h1>
+                <p>Fecha de lanzamiento: <span id="fechaLanzamiento"></span></p>
+                <p>Sinopsis: <span id="descripcionSerie"></span></p>
+                <p>Temporadas: <span id="temporadas"></span></p>
+                <p>Géneros: <span id="generos"></span></p>
+            </div>
         </div>
     </div>
 </main>
