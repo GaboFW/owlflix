@@ -4,7 +4,7 @@ function $(id) {
 
 function crearCarta(titulo, imgUrl, id) {
     const col = document.createElement("div");
-    col.className = "col-md-2";
+    col.className = "col-6 col-sm-4 col-md-3 col-lg-2";
 
     const card = document.createElement("div");
     card.className = "card";
@@ -15,7 +15,7 @@ function crearCarta(titulo, imgUrl, id) {
     const img = document.createElement("img");
     img.setAttribute("src", imgUrl);
     img.setAttribute("alt", titulo);
-    img.className = "card-img-top rounded";
+    img.className = "card-img-top rounded img-fluid imgModificar";
 
     link.appendChild(img);
     card.appendChild(link);

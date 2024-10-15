@@ -1,15 +1,13 @@
 NOMBRE Y CONTACTO
 Documentacion de Interfaz
 Carrito - Info del producto, total de los productos, forma de paga claro
-Boton para Comprar Peliculas/Series
 Login
 Contacto??
-
-Filtrar por Nombre - ARREGLAR ESTILOS!!
 
 MEJORAR RESPONSIVE (About, Contacto, Miembros)
 INVENTAR INFORMACION RANDOM!!!
     +info... - About
-Diseño de las pelis/series, Detalles de pelis/series
 
-scriptHomeBusqueda.js -> Ver que onda el link para la busqueda FUERA DEL HOME
+Ver que onda poner en el "slider"
+
+Arreglar el tema de la busqueda sin Live Server
