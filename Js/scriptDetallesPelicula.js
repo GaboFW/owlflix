@@ -3,7 +3,9 @@ function $(id) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const params = new URLSearchParams(window.location.search);
+    const url = `${window.location.origin}/CuevanaChino/Paginas/detallesPeliculas.html`;
+
+    const params = new URLSearchParams(url); //new URLSearchParams(window.location.search)
     const idPelicula = params.get("id");
 
     if (idPelicula) {

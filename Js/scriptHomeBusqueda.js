@@ -13,6 +13,6 @@ $("search-bar").addEventListener("keydown", function(event) {
 function cambiarHref() {
     const query = $("search-bar").value.trim();
     if (query) {
-        window.location.href = `D:/Escritorio/UTN/Programacion III/CuevanaChino/busqueda.html?search=${query}`; /////////////////////////////////////////////
+        window.location.href = `${window.location.origin}/busqueda.html?search=${query}`;
     }
 }
