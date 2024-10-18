@@ -5,7 +5,7 @@ function $(id) {
 document.addEventListener("DOMContentLoaded", async () => {
     const url = `${window.location.origin}/CuevanaChino/Paginas/detallesSeries.html`;
 
-    const params = new URLSearchParams(url); //const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(url); //const params = new URLSearchParams(window.location.search); ERROR 404
     const idSerie = params.get("id");
 
     if (idSerie) {
