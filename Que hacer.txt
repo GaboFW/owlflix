@@ -9,5 +9,3 @@ INVENTAR INFORMACION RANDOM!!!
     +info... - About
 
 Ver que onda poner en el "slider"
-
-Arreglar el tema de la busqueda sin Live Server
