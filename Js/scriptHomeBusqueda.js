@@ -13,8 +13,7 @@ $("search-bar").addEventListener("keydown", function(event) {
 function cambiarHref() {
     const query = document.getElementById("search-bar").value.trim();
     if (query) {
-        // window.location.href = `${window.location.origin}/busqueda.html?search=${query}`;
-        window.location.href = `busqueda.html?search=${query}`;
+        window.location.href = `/${owlflix}/busqueda.html?search=${query}`;
     }
 }
 

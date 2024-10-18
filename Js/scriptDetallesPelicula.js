@@ -3,7 +3,7 @@ function $(id) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const url = `${window.location.origin}/CuevanaChino/Paginas/detallesPeliculas.html`;
+    const url = `${window.location.origin}/owlflix/Paginas/detallesPeliculas.html`;
 
     const params = new URLSearchParams(url); //new URLSearchParams(window.location.search) ERROR 404
     const idPelicula = params.get("id");
