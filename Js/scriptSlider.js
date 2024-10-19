@@ -10,7 +10,7 @@ function crearCarta(titulo, imgUrl, id) {
     card.className = "card";
 
     const link = document.createElement("a");
-    link.setAttribute("href", `Paginas/detallesPeliculas.html?id=${id}`);
+    link.setAttribute("href", `Paginas/detallesPeliculas.html?id=${id}`); /////////////////////////////////////////
 
     const img = document.createElement("img");
     img.setAttribute("src", imgUrl);
