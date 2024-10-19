@@ -3,7 +3,7 @@ function $(id) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const params = new URLSearchParams(url);
+    const params = new URLSearchParams(window.location.search);
     const idPelicula = params.get("id");
 
     if (idPelicula) {
