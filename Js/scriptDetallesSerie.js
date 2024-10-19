@@ -31,4 +31,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-
+console.log(window.location);
