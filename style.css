@@ -131,6 +131,10 @@ body {
     color: var(--letraMain);
 }
 
+.haceteMiembro {
+    margin-left: 213px;
+}
+
 .containerMiembros {
     gap: 20px;
 }
@@ -491,4 +495,3 @@ body {
 .imgSearch:hover{
     opacity: 0.5;
 }
-
