@@ -2,7 +2,7 @@ function $(id) {
     return document.getElementById(id);
 }
 
-function crearCarta(titulo, imgUrl, id) {
+function crearCarta(titulo, imgUrl, id, categoria) {
     const col = document.createElement("div");
     col.className = "col-6 col-sm-4 col-md-3 col-lg-2";
 
@@ -10,7 +10,7 @@ function crearCarta(titulo, imgUrl, id) {
     card.className = "card";
 
     const link = document.createElement("a");
-    link.setAttribute("href", `Paginas/detallesPeliculas.html?id=${id}`); /////////////////////////////////////////
+    link.setAttribute("href", `Paginas/detalles${categoria}.html?id=${id}`);
 
     const img = document.createElement("img");
     img.setAttribute("src", imgUrl);
@@ -34,7 +34,7 @@ async function cargarPeliculas() {
 
         const cincoPeliculas1 = data.results.slice(0, 5);
         for (const pelicula of cincoPeliculas1) {
-            const poster = crearCarta(pelicula.title, `https://image.tmdb.org/t/p/w500${pelicula.poster_path}`, pelicula.id);
+            const poster = crearCarta(pelicula.title, `https://image.tmdb.org/t/p/w500${pelicula.poster_path}`, pelicula.id, "Peliculas");
 
             container.appendChild(poster);
         }
@@ -61,7 +61,7 @@ async function cargarSeries() {
 
         const cincoSeries1 = data.results.slice(0, 5);
         for (const serie of cincoSeries1) {
-            const poster = crearCarta(serie.title, `https://image.tmdb.org/t/p/w500${serie.poster_path}`, serie.id);
+            const poster = crearCarta(serie.title, `https://image.tmdb.org/t/p/w500${serie.poster_path}`, serie.id, "Series");
 
             container.appendChild(poster);
         }
