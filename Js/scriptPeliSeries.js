@@ -11,6 +11,7 @@ function botonAnterior() {
         if (pagina > 1) {
             pagina -= 1;
             cargarPeliculas();
+            cargarSeries();
         }
     });
 }
@@ -22,16 +23,17 @@ function botonSiguiente() {
         if (pagina < 1000) {
             pagina += 1;
             cargarPeliculas();
+            cargarSeries();
         }
     });
 }
 
-function crearCarta(titulo, imgUrl, id) {
+function crearCarta(titulo, imgUrl, id, categoria) {
     const card = document.createElement("div");
     card.className = "poster";
 
     const link = document.createElement("a");
-    link.setAttribute("href", `detallesPeliculas.html?id=${id}`);
+    link.setAttribute("href", `detalles${categoria}.html?id=${id}`);
 
     const img = document.createElement("img");
     img.setAttribute("src", imgUrl);
@@ -50,6 +52,8 @@ function crearCarta(titulo, imgUrl, id) {
 
 async function cargarPeliculas() {
     const container = $("peliculasContainer");
+
+    if (!container) { return }
     
     while (container.firstChild) {
         container.removeChild(container.firstChild);
@@ -60,8 +64,31 @@ async function cargarPeliculas() {
         const data = await respuesta.json();
 
         for (const pelicula of data.results) {
-            const poster = crearCarta(pelicula.title, `https://image.tmdb.org/t/p/w500${pelicula.poster_path}`, pelicula.id);
+            const poster = crearCarta(pelicula.title, `https://image.tmdb.org/t/p/w500${pelicula.poster_path}`, pelicula.id, "Peliculas");
 
+            container.appendChild(poster);
+        }
+    } catch (error) {
+        console.error("Error ", error.message);
+    }
+};
+
+async function cargarSeries() {
+    const container = $("seriesContainer");
+
+    if (!container) { return }
+    
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+
+    try {
+        const respuesta = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=191528030c357419329af1198edbcb24&language=es-MX&page=${pagina}`);
+        const data = await respuesta.json();
+
+        for (const serie of data.results) {
+            const poster = crearCarta(serie.name, `https://image.tmdb.org/t/p/w500${serie.poster_path}`, serie.id, "Series");
+            
             container.appendChild(poster);
         }
     } catch (error) {
@@ -72,5 +99,6 @@ async function cargarPeliculas() {
 window.onload = () => {
     botonAnterior();
     botonSiguiente();
-    cargarPeliculas();
+    cargarPeliculas(); /////////////////////////
+    cargarSeries();
 };

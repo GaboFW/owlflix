@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             $("posterSerie").setAttribute("src", `https://image.tmdb.org/t/p/w500${data.poster_path}`);
             $("posterSerie").setAttribute("alt", data.name);
             $("descripcionSerie").textContent = data.overview;
-            // $("temporadas").textContent = `Temporadas: ${data.seasons[0].season_number}`;
+            $("temporadas").textContent = data.seasons[0].season_number;
             data.genres.forEach(genre => {
                 const generoElemento = document.createElement("span");
                 generoElemento.textContent = genre.name + " ";
@@ -26,5 +26,3 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 });
-
-console.log(window.location);

@@ -8,4 +8,11 @@ MEJORAR RESPONSIVE (About, Contacto, Miembros)
 INVENTAR INFORMACION RANDOM!!!
     +info... - About
 
-Ver que onda poner en el "slider"
+Modificar con @Media:
+    slider
+    peliculas
+    series
+    logo - navbar
+    about
+    contacto
+    miembros

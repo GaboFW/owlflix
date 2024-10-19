@@ -18,5 +18,3 @@ function cambiarHref() {
         window.location.href = `/${repo}/busqueda.html?search=${query}`;
     }
 }
-
-console.log(window.location);
