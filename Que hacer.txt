@@ -8,12 +8,9 @@ Modificar con @Media:
     slider
     peliculas
     series
-    logo - navbar
+    logo - navbar (quitar el logo??)
     about
     contacto
     miembros
     detallesPeliculas
     detallesSeries
-
-hamburguesa al achicar pantalla
-    quitar el logo??
