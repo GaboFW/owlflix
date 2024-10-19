@@ -41,7 +41,7 @@ async function cargarPeliculas() {
 
         const cincoPeliculas2 = data.results.slice(10, 15);
         for (const pelicula of cincoPeliculas2) {
-            const poster = crearCarta(pelicula.title, `https://image.tmdb.org/t/p/w500${pelicula.poster_path}`, pelicula.id);
+            const poster = crearCarta(pelicula.title, `https://image.tmdb.org/t/p/w500${pelicula.poster_path}`, pelicula.id, "Peliculas");
 
             container2.appendChild(poster);
         }
@@ -68,7 +68,7 @@ async function cargarSeries() {
 
         const cincoSeries2 = data.results.slice(10, 15);
         for (const serie of cincoSeries2) {
-            const poster = crearCarta(serie.title, `https://image.tmdb.org/t/p/w500${serie.poster_path}`, serie.id);
+            const poster = crearCarta(serie.title, `https://image.tmdb.org/t/p/w500${serie.poster_path}`, serie.id, "Series");
 
             container2.appendChild(poster);
         }
