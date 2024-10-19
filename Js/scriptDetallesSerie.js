@@ -3,10 +3,6 @@ function $(id) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const url = `${window.location.origin}/owlflix/Paginas/detallesSeries.html`;
-
-    console.log(window.location);
-
     const params = new URLSearchParams(window.location.search);
     const idSerie = params.get("id");
 

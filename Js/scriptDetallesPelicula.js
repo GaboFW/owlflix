@@ -3,11 +3,7 @@ function $(id) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const url = `${window.location.origin}/owlflix/Paginas/detallesPeliculas.html`;
-
-    console.log(window.location);
-
-    const params = new URLSearchParams(url); //new URLSearchParams(window.location.search) ERROR 404
+    const params = new URLSearchParams(url);
     const idPelicula = params.get("id");
 
     if (idPelicula) {

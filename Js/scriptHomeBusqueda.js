@@ -10,16 +10,6 @@ $("search-bar").addEventListener("keydown", function(event) {
     }
 });
 
-// function cambiarHref() {
-//     const query = $("search-bar").value.trim();
-
-//     const repo = "OwlFlix";
-
-//     if (query) {
-//         window.location.href = `${window.location.origin}/${repo}/busqueda.html?search=${query}`;
-//     }
-// }
-
 function cambiarHref() {
     const query = $("search-bar").value.trim();
     const repo = "OwlFlix";
