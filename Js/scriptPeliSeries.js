@@ -99,6 +99,6 @@ async function cargarSeries() {
 window.onload = () => {
     botonAnterior();
     botonSiguiente();
-    cargarPeliculas(); /////////////////////////
+    cargarPeliculas();
     cargarSeries();
 };

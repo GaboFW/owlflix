@@ -1,12 +1,8 @@
-NOMBRE Y CONTACTO
+CONTACTO
 Documentacion de Interfaz
-Carrito - Info del producto, total de los productos, forma de paga claro
+Carrito - Info del producto, total de los productos, forma de pago claro
 Login
 Contacto??
-
-MEJORAR RESPONSIVE (About, Contacto, Miembros)
-INVENTAR INFORMACION RANDOM!!!
-    +info... - About
 
 Modificar con @Media:
     slider
@@ -16,3 +12,8 @@ Modificar con @Media:
     about
     contacto
     miembros
+    detallesPeliculas
+    detallesSeries
+
+hamburguesa al achicar pantalla
+    quitar el logo??
