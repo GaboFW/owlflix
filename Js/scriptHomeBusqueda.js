@@ -12,7 +12,7 @@ $("search-bar").addEventListener("keydown", function(event) {
 
 function cambiarHref() {
     const query = $("search-bar").value.trim();
-    const repo = "OwlFlix";
+    const repo = "owlflix";
 
     if (query) {
         window.location.href = `/${repo}/busqueda.html?search=${query}`;

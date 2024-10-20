@@ -9,7 +9,7 @@ Modificar con @Media:
     peliculas
     series
     logo - navbar (quitar el logo??)
-    about
+    about - achicar logo
     contacto
     miembros
     detallesPeliculas

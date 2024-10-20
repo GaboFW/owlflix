@@ -4,8 +4,9 @@ function masTexto() {
 
     if (moreText.style.display === "none") {
         moreText.style.display = "block";
+        masInfo.textContent = "Mostrar menos...";
     } else {
         moreText.style.display = "none";
-        masInfo.textContent = "Mostrar mas...";
+        masInfo.textContent = "Mostrar más...";
     }
 }
