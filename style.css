@@ -54,6 +54,11 @@ body {
     width: 30px;
     height: 30px;
     margin-right: 10px;
+    cursor: pointer;
+}
+
+.carrito {
+    cursor: pointer;
 }
 
 /* Contacto */
@@ -342,30 +347,35 @@ body {
     color: black;
 }
 
-#amantesPeliculas,
-#maratonearSeries {
+#sliderSwiperPelis,
+#sliderSwiperSeries {
     width: 100%;
     height: 550px;
+    overflow: hidden;
     color: white;
     background-color: var(--colorMain);
-    margin: 10px auto;
-    overflow: hidden;
 }
 
-.imgModificar {
-    width: 500px;
+#sliderSwiperPelis p,
+#sliderSwiperSeries p{
+    margin-bottom: 5px;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.swiper-wrapper {
+    margin-top: 0;
+}
+
+.swiper-slide img {
+    width: 300px;
     height: auto;
-    object-fit: cover;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: black;
-}
-
-#amantesPeliculas p,
-#maratonearSeries p {
-    margin-left: 25px;
+    border-radius: 20px;
 }
 
 #finHome {
@@ -495,3 +505,30 @@ body {
 .imgSearch:hover{
     opacity: 0.5;
 }
+
+/* Login - Registro */
+.login-form,
+.registro-form {
+    background-color: var(--colorMain);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+    color: var(--letraMain);
+}
+
+.ojos {
+    position: relative;
+}
+
+.ojoIcon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-3%);
+    cursor: pointer;
+}
+
+
+
+

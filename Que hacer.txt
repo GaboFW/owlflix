@@ -1,11 +1,8 @@
-CONTACTO
 Documentacion de Interfaz
 Carrito - Info del producto, total de los productos, forma de pago claro
-Login
-Contacto??
+Login - agregarlo a la imagen (menos index, busqueda)
 
 Modificar con @Media:
-    slider
     peliculas
     series
     logo - navbar (quitar el logo??)
