@@ -136,10 +136,6 @@ body {
     color: var(--letraMain);
 }
 
-.haceteMiembro {
-    margin-left: 213px;
-}
-
 .containerMiembros {
     gap: 20px;
 }
@@ -406,6 +402,10 @@ body {
     text-align: left;
 }
 
+#h2Faq {
+    color: var(--letraMain);
+}
+
 .faq-contacto h3 {
     margin: 0 0 10px 0;
     font-size: 18px;
@@ -529,6 +529,163 @@ body {
     cursor: pointer;
 }
 
+@media (max-width: 350px) {
+    #textoHome p {
+        position: absolute;
+        bottom: 0;
+        color: white;
+        padding: 1rem;
+        font-size: 65px;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black;
+    }
 
+    #ImgNecesitamos {
+        display: none;
+    }
 
+    .poster {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .poster .titulo {
+        display: block;
+        position: static;
+        opacity: 1;
+        background: none;
+        color: var(--letraMain);
+        padding: 5px;
+    }
+
+    .poster a {
+        text-decoration: none;
+    }
+
+    .mainAbout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mainAbout figure img {
+        display: none;
+    }
+
+    #aboutUs {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    #textoHome p {
+        position: absolute;
+        bottom: 0;
+        color: white;
+        padding: 1rem;
+        font-size: 65px;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black;
+    }
+
+    #ImgNecesitamos {
+        display: none;
+    }
+
+    .poster {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .poster .titulo {
+        display: block;
+        position: static;
+        opacity: 1;
+        background: none;
+        color: var(--letraMain);
+        padding: 5px;
+    }
+
+    .poster a {
+        text-decoration: none;
+    }
+
+    .mainAbout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mainAbout {
+        display: flex;
+        flex-direction: column !important;
+        align-items: center;
+    }
+
+    figure {
+        order: -1;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    #aboutUs {
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 750px) {
+    #textoHome p {
+        position: absolute;
+        bottom: 0;
+        color: white;
+        padding: 1rem;
+        font-size: 65px;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black;
+    }
+
+    #ImgNecesitamos {
+        display: none;
+    }
+
+    .poster {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .poster .titulo {
+        display: block;
+        position: static;
+        opacity: 1;
+        background: none;
+        color: var(--letraMain);
+        padding: 5px;
+    }
+
+    .poster a {
+        text-decoration: none;
+    }
+
+    .mainAbout {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        padding-top: 20px;
+        max-width: 90vw;
+        margin: auto;
+    }
+    
+    #aboutUs {
+        max-width: 600px;
+        margin-left: 20px;
+    }
+    
+    figure img {
+        width: 150px;
+        height: auto;
+    }
+}

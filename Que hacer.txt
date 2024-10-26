@@ -1,13 +1,5 @@
 Documentacion de Interfaz
 Carrito - Info del producto, total de los productos, forma de pago claro
-Login - agregarlo a la imagen (menos index, busqueda)
 
-Modificar con @Media:
-    peliculas
-    series
-    logo - navbar (quitar el logo??)
-    about - achicar logo
-    contacto
-    miembros
-    detallesPeliculas
-    detallesSeries
+Footer!!
+Verificacion del form y mostrar que se envio un mensaje
