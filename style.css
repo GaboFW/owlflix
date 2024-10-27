@@ -6,14 +6,13 @@
 
 body {
     margin: 0;
+    height: 100vh;
     font-family: "Open Sans";
     position: relative;
-    min-height: 100hv;
-
     background-color: rgb(26, 26, 26);
 }
 
-/* HEADER */
+/* Header */
 .navbar {
     background-color: black;
     margin-bottom: 10px;
@@ -59,6 +58,39 @@ body {
 
 .carrito {
     cursor: pointer;
+}
+
+/* Footer */
+#homeFooter {
+    background-color: var(--colorMain) !important;
+    color: var(--letraMain);
+    margin: 20px 0 0 0;
+}
+
+#logoFooter {
+    width: 150px;
+    height: auto;
+}
+
+.textoA {
+    color: var(--letraMain) !important;
+}
+
+#divDerechos {
+    width: 100%;
+    background: black;
+    margin-top: 0;
+    padding: 10px 0;
+}
+
+#derechosReservados {
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+#divImagenes img {
+    width: 32px;
+    height: 32px;
 }
 
 /* Contacto */
@@ -109,6 +141,7 @@ body {
     justify-content: center;
     flex-wrap: nowrap;
     color: var(--letraMain);
+    margin: 63px auto
 }
 
 #aboutUs {
@@ -513,7 +546,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     max-width: 400px;
-    margin: 0 auto;
+    margin: 53px auto;
     color: var(--letraMain);
 }
 

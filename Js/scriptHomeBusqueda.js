@@ -4,7 +4,7 @@ function $(id) {
 
 $("search-button").addEventListener("click", cambiarHref);
 
-$("search-bar").addEventListener("keydown", function(event) {
+$("search-bar").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         cambiarHref();
     }

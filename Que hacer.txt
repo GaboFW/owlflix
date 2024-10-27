@@ -1,5 +1,5 @@
 Documentacion de Interfaz
 Carrito - Info del producto, total de los productos, forma de pago claro
 
-Footer!!
+Footer!! (767) -> centrar iconos redes
 Verificacion del form y mostrar que se envio un mensaje
