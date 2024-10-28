@@ -2,6 +2,14 @@
     --colorMain: #183949;
     --verdeMain: #1ce783;
     --letraMain: whitesmoke;
+    --background: rgb(26, 26, 26);
+}
+
+:root.light-mode {
+    --colorMain: #183949;
+    --verdeMain: #1ce783;
+    --letraMain: black;
+    --background: white;
 }
 
 body {
@@ -9,7 +17,7 @@ body {
     height: 100vh;
     font-family: "Open Sans";
     position: relative;
-    background-color: rgb(26, 26, 26);
+    background-color: var(--background);
 }
 
 /* Header */
@@ -24,7 +32,7 @@ body {
 }
 
 .navbar-nav .nav-link {
-    color: var(--letraMain) !important;
+    color: whitesmoke !important;
 }
 
 .nav-link:hover {
@@ -63,7 +71,7 @@ body {
 /* Footer */
 #homeFooter {
     background-color: var(--colorMain) !important;
-    color: var(--letraMain);
+    color: whitesmoke;
     margin: 20px 0 0 0;
 }
 
@@ -73,7 +81,7 @@ body {
 }
 
 .textoA {
-    color: var(--letraMain) !important;
+    color: whitesmoke !important;
 }
 
 #divDerechos {
@@ -100,7 +108,7 @@ body {
     border-radius: 10px;
     max-width: 400px;
     margin: 0 auto;
-    color: var(--letraMain);
+    color: whitesmoke;
 }
 
 .form-control {
@@ -144,6 +152,10 @@ body {
     margin: 63px auto
 }
 
+.mainAbout figure img {
+    border: 1px solid black;
+}
+
 #aboutUs {
     display: flex;
     flex-direction: column;
@@ -178,7 +190,7 @@ body {
     border: 2px solid var(--verdeMain);
     border-radius: 10px;
     padding: 20px;
-    color: var(--letraMain);
+    color: whitesmoke;
 }
 
 .containerMiembros .card img {
@@ -425,11 +437,16 @@ body {
     object-fit: cover;
 }
 
+/* FAQs */
+.faq {
+    margin: 75px auto;
+}
+
 .faq-contacto {
     position: absolute;
     bottom: 0;
     background-color: var(--colorMain);
-    color: white;
+    color: whitesmoke;
     width: 100%;
     padding: 20px;
     text-align: left;
@@ -468,7 +485,7 @@ body {
     border: none;
 }
 
-.mainPreguntasFrecuentes{
+.PreguntasFrecuentes{
     color: var(--letraMain);
 }
 
@@ -549,7 +566,7 @@ body {
     border-radius: 10px;
     max-width: 400px;
     margin: 53px auto;
-    color: var(--letraMain);
+    color: whitesmoke;
 }
 
 .ojos {
