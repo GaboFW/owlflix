@@ -23,7 +23,7 @@
                 <a class="navbar-brand ms-auto d-none d-md-block" href="index.html">
                     <img src="Imagenes/Logo123.png" alt="Logo" class="navbar-logo">
                 </a>
-                <div class="toggle-theme">
+                <div class="toggle-theme ms-auto d-none d-md-block">
                     <img id="imagen-modo" src="Imagenes/Cambiar Modo.png" onclick="cambiarModo()">
                 </div>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
@@ -32,13 +32,16 @@
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
                             <img src="Imagenes/Logo123.png" alt="Logo" class="navbar-logo">
                         </h5>
+                        <div class="toggle-theme">
+                            <img id="imagen-modo" src="Imagenes/Cambiar Modo.png" onclick="cambiarModo()">
+                        </div>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body d-flex justify-content-end">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item d-lg-none">
-                                <a class="nav-link mx-lg-2 fs-2 text" href="index.html">Home</a>
+                                <a class="nav-link mx-lg-2 fs-2 text active" href="index.html">Home</a>
                             </li>
                             <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="Paginas/peliculas.html">Peliculas</a></li>
                             <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="Paginas/series.html">Series</a></li>
@@ -182,7 +185,6 @@
     <script src="Js/scriptBusqueda.js"></script>
     <script src="Js/scriptHomeBusqueda.js"></script>
     <script src="Js/scriptSlider.js"></script>
-
-    <script src="JS/scriptCambiarModo.js"></script>
+    <script src="Js/scriptCambiarModo.js"></script>
 </body>
 </html>

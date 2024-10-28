@@ -44,8 +44,8 @@ body {
 }
 
 .navbar-toggler {
-    background-color: var(--letraMain);
-    color: var(--colorMain);
+    background-color: whitesmoke;
+    color: whitesmoke;
 }
 
 .offcanvas-body,
@@ -54,7 +54,11 @@ body {
 }
 
 .btn-close {
-    background-color: var(--letraMain);
+    background-color: whitesmoke;
+}
+
+#search-bar {
+    color: whitesmoke;
 }
 
 .userIcon {
@@ -113,7 +117,7 @@ body {
 
 .form-control {
     background-color: var(--colorMain);
-    color: var(--letraMain);
+    color: whitesmoke;
     border-radius: 10px;
     resize: none !important;
 }
@@ -124,7 +128,7 @@ body {
 
 .form-control:focus {
     background-color: var(--colorMain);
-    color: var(--letraMain);
+    color: whitesmoke;
 }
 
 .btn-primary {
@@ -245,7 +249,7 @@ body {
     left: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.7);
-    color: var(--letraMain);
+    color: whitesmoke;
     text-align: center;
     padding: 10px;
     opacity: 0;
@@ -497,7 +501,6 @@ body {
 
 #resultadosBusqueda {
     min-height: 50vh;
-
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -597,7 +600,8 @@ body {
         -webkit-text-stroke-color: black;
     }
 
-    #ImgNecesitamos {
+    #ImgNecesitamos,
+    .mainAbout figure img {
         display: none;
     }
 
@@ -623,10 +627,6 @@ body {
     .mainAbout {
         flex-direction: column;
         align-items: center;
-    }
-
-    .mainAbout figure img {
-        display: none;
     }
 
     #aboutUs {
