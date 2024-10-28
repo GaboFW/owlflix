@@ -70,11 +70,12 @@
                 <h2>Iniciar Sesion</h2>
                 <div class="mb-3">
                     <label for="Email" class="form-label">Email:</label>
-                    <input type="text" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Email"> <!-- type="text"-->
+                    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Email" required>
+                    <span id="emailError" class="error-message"></span>
                 </div>
                 <div class="mb-3 ojos">
                     <label for="PasswordLogin" class="form-label">Password:</label>
-                    <input type="password" class="form-control" id="PasswordLogin" placeholder="Password">
+                    <input type="password" class="form-control" id="PasswordLogin" placeholder="Password" required>
                     <p><img src="../Imagenes/Ojo cerrado.png" class="ojoIcon" id="ojoLogin"></p>
                 </div>
                 <button type="submit" class="btn btn-primary w-100" id="botonInicioSesion">Iniciar Sesion</button>

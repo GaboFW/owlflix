@@ -68,16 +68,16 @@
             <h2>Contacto</h2>
             <form id="formContacto">
                 <div class="form-group">
-                    <input type="text" class="form-control mb-2" placeholder="Nombre">
+                    <input type="text" class="form-control mb-2" placeholder="Nombre" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control mb-2" placeholder="Apellido">
+                    <input type="text" class="form-control mb-2" placeholder="Apellido" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control mb-2" placeholder="Email"> <!-- type="text"-->
+                    <input type="email" class="form-control mb-2" placeholder="Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control mb-2" placeholder="Asunto">
+                    <input type="text" class="form-control mb-2" placeholder="Asunto" required>
                 </div>
                 <div class="form-group">
                     <textarea class="form-control mb-2" placeholder="Escribe tu consulta..." rows="10"></textarea>
@@ -85,6 +85,8 @@
                 <button type="submit" class="btn btn-primary w-100">Enviar</button>
             </form>
         </div>
+        
+        <div id="mensajeConfirmacion">¡Se envió correctamente!</div>
     </main>
 
     <footer class="bg-body-tertiary text-center text-md-start" id="homeFooter">
@@ -123,11 +125,14 @@
             <p class="text-center" id="derechosReservados">® Derechos reservados alumnos UTN ®</p>
         </div>
     </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
 
     <script src="../Js/scriptHomeBusqueda.js"></script>
+    <script src="../Js/scriptMensaje.js"></script>
 </body>
 </html>
