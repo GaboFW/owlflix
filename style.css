@@ -562,23 +562,6 @@ body {
     cursor: pointer;
 }
 
-/* Mensaje */
-/* #mensajeConfirmacion {
-    width: 300px;
-    float: right;
-    position: relative;
-    display: none;
-    padding: 10px;
-    background-color: var(--verdeMain);
-    color: black;
-    text-align: center;
-    bottom: 50px;
-} */
-
-.small-swal {
-    width: 300px;
-}
-
 @media (max-width: 350px) {
     #textoHome p {
         position: absolute;
