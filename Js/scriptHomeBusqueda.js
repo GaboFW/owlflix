@@ -10,6 +10,9 @@ $("search-bar").addEventListener("keypress", function(event) {
     }
 });
 
+/**
+ * Cambia el html para ir a la busqueda
+ */
 function cambiarHref() {
     const query = $("search-bar").value.trim();
     const repo = "owlflix";

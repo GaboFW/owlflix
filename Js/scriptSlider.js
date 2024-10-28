@@ -19,6 +19,14 @@ const swiper = new Swiper('.swiper', {
     },
 });
 
+/**
+ * Crea los elementos para el swiper
+ * @param {*} titulo 
+ * @param {*} imgUrl 
+ * @param {*} id 
+ * @param {*} categoria 
+ * @returns 
+ */
 function crearCarta(titulo, imgUrl, id, categoria) {
     const card = document.createElement("div");
     card.className = "swiper-slide";
@@ -36,6 +44,9 @@ function crearCarta(titulo, imgUrl, id, categoria) {
     return card;
 }
 
+/**
+ * Llamado a la Api para traer las peliculas
+ */
 async function cargarPeliculas() {
     const container = $("sliderPelis");
 
@@ -55,6 +66,9 @@ async function cargarPeliculas() {
     }
 };
 
+/**
+ * Llamado a la Api para traer las series
+ */
 async function cargarSeries() {
     const container = $("sliderSeries");
 

@@ -7,39 +7,53 @@ document.addEventListener("DOMContentLoaded", function() {
     const query = params.get("search");
     
     if (query) {
-        fetchMovies(query);
-        fetchSeries(query);
+        fetchResults(query);
     }
 });
 
-function fetchMovies(query) {
-    const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=191528030c357419329af1198edbcb24&language=es-MX&query=${query}`;
+/**
+ * Llamado a la api y usar promesas para el manejo de la Api
+ * @param {*} query 
+ */
+function fetchResults(query) {
+    const moviesApiUrl = `https://api.themoviedb.org/3/search/movie?api_key=191528030c357419329af1198edbcb24&language=es-MX&query=${query}`;
+    const seriesApiUrl = `https://api.themoviedb.org/3/search/tv?api_key=191528030c357419329af1198edbcb24&language=es-MX&query=${query}`;
 
-    fetch(apiUrl)
+    Promise.all([
+        fetch(moviesApiUrl)
         .then(response => response.json())
-        .then(data => {
-            resultadoPeliculas(data.results);
-        })
-        .catch(error => {
-            console.error("Error al obtener los resultados:", error);
-        });
+        .then(data => data.results),
+
+        fetch(seriesApiUrl)
+        .then(response => response.json())
+        .then(data => data.results)
+    ])
+    .then(([movies, series]) => {
+        mostrarResultados(movies, series);
+    })
+    .catch(error => {
+        console.error("Error al obtener los resultados:", error);
+    });
 }
 
-function fetchSeries(query) {
-    const apiUrl = `https://api.themoviedb.org/3/search/tv?api_key=191528030c357419329af1198edbcb24&language=es-MX&query=${query}`;
+/**
+ * Crea los elementos necesarios para mostrar el resultado de la Api
+ * @param {*} movies 
+ * @param {*} series 
+ * @returns 
+ */
+function mostrarResultados(movies, series) {
+    const resultadosContainer = document.getElementById("resultadosBusqueda");
 
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            resultadoSeries(data.results);
-        })
-        .catch(error => {
-            console.error("Error al obtener los resultados:", error);
-        });
-}
+    if (movies.length === 0 && series.length === 0) {
+        const mensajeElement = document.createElement("h3");
+        mensajeElement.textContent = "No se encontraron resultados";
+        mensajeElement.className = "mensajeSinResultados";
 
-function resultadoPeliculas(movies) {
-    const resultadosContainer = $("resultadosBusqueda");
+        resultadosContainer.appendChild(mensajeElement);
+
+        return;
+    }
 
     movies.forEach(movie => {
         const divElement = document.createElement("div");
@@ -60,14 +74,10 @@ function resultadoPeliculas(movies) {
 
         aElement.appendChild(imgElement);
         aElement.appendChild(titleElement);
-        divElement.appendChild(aElement); 
+        divElement.appendChild(aElement);
 
         resultadosContainer.appendChild(divElement);
     });
-}
-
-function resultadoSeries(series) {
-    const resultadosContainer = $("resultadosBusqueda");
 
     series.forEach(serie => {
         const divElement = document.createElement("div");
@@ -75,7 +85,7 @@ function resultadoSeries(series) {
 
         const imgElement = document.createElement("img");
         imgElement.src = `https://image.tmdb.org/t/p/w500${serie.poster_path}`;
-        imgElement.alt = serie.title;
+        imgElement.alt = serie.name;
         imgElement.className = "imgSearch";
 
         const nameElement = document.createElement("h3");
@@ -88,7 +98,7 @@ function resultadoSeries(series) {
 
         aElement.appendChild(imgElement);
         aElement.appendChild(nameElement);
-        divElement.appendChild(aElement);  
+        divElement.appendChild(aElement);
 
         resultadosContainer.appendChild(divElement);
     });

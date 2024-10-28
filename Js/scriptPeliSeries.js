@@ -28,6 +28,14 @@ function botonSiguiente() {
     });
 }
 
+/**
+ * Crea los elementos para crear el card con las peliculas o series
+ * @param {*} titulo 
+ * @param {*} imgUrl 
+ * @param {*} id 
+ * @param {*} categoria 
+ * @returns 
+ */
 function crearCarta(titulo, imgUrl, id, categoria) {
     const card = document.createElement("div");
     card.className = "poster";
@@ -50,6 +58,10 @@ function crearCarta(titulo, imgUrl, id, categoria) {
     return card;
 }
 
+/**
+ * Llamado a la Api para traer las peliculas
+ * @returns 
+ */
 async function cargarPeliculas() {
     const container = $("peliculasContainer");
 
@@ -73,6 +85,10 @@ async function cargarPeliculas() {
     }
 };
 
+/**
+ * Llamado a la Api para traer las series
+ * @returns 
+ */
 async function cargarSeries() {
     const container = $("seriesContainer");
 

@@ -1,6 +1,13 @@
+function $(id) {
+    return document.getElementById(id);
+}
+
+/**
+ * Crea el boton "Mostrar mas..."
+ */
 function masTexto() {
-    const moreText = document.getElementById("about-mas");
-    const masInfo = document.getElementById("masInfo");
+    const moreText = $("about-mas");
+    const masInfo = $("masInfo");
 
     if (moreText.style.display === "none") {
         moreText.style.display = "block";

@@ -4,6 +4,9 @@ function $(id) {
 
 const btnRegistro = $("registroBtn");
 
+/**
+ * Verifica que la confirmacion de la contraseña sea igual a la contraseña
+ */
 function verificarDatos() {
     const contraRegistro = $("Password");
     const confirmarContraRegistro = $("ConfirmarContraseña");

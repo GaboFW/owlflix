@@ -2,6 +2,10 @@ function $(id) {
     return document.getElementById(id);
 }
 
+/**
+ * Muestra el mensaje de confirmacion del form de Contacto
+ * @param {*} e 
+ */
 function mostrarMensaje(e) {
     e.preventDefault();
 

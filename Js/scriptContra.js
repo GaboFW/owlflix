@@ -24,6 +24,11 @@ if (iconLogin){
     });
 }
 
+/**
+ * Logica para mostrar la contraseña
+ * @param {*} inputId 
+ * @param {*} iconElement 
+ */
 function mostrarContra(inputId, iconElement) {
     const input = $(inputId);
 
