@@ -3,7 +3,6 @@ function $(id) {
 }
 
 const swiper = new Swiper('.swiper', {
-    slidesPerView: 4,
     loop: true,
     navigation: {
         nextEl: '.swiper-button-next',
@@ -16,6 +15,20 @@ const swiper = new Swiper('.swiper', {
     scrollbar: {
         el: '.swiper-scrollbar',
         draggable: true,
+    },
+    breakpoints: {
+        350: {
+            slidesPerView: 1,
+        },
+        600: {
+            slidesPerView: 2,
+        },
+        1000: {
+            slidesPerView: 3,
+        },
+        1500: {
+            slidesPerView: 4,
+        },
     },
 });
 
