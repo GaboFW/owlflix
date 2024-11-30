@@ -2,29 +2,26 @@ function $(id) {
     return document.getElementById(id);
 }
 
-let pagina = 1;
+const urlParams = new URLSearchParams(window.location.search);
+let pagina = parseInt(urlParams.get("page")) || 1;
 
 function botonAnterior() {
-    const btnAnterior = $("btnAnterior");
+    const btnAnterior = document.getElementById("btnAnterior");
 
     btnAnterior.addEventListener("click", () => {
         if (pagina > 1) {
             pagina -= 1;
-            cargarPeliculas();
-            cargarSeries();
+            window.location.search = `?page=${pagina}`;
         }
     });
 }
 
 function botonSiguiente() {
-    const btnSiguiente = $("btnSiguiente");
+    const btnSiguiente = document.getElementById("btnSiguiente");
 
     btnSiguiente.addEventListener("click", () => {
-        if (pagina < 1000) {
-            pagina += 1;
-            cargarPeliculas();
-            cargarSeries();
-        }
+        pagina += 1;
+        window.location.search = `?page=${pagina}`;
     });
 }
 
@@ -66,18 +63,17 @@ async function cargarPeliculas() {
     const container = $("peliculasContainer");
 
     if (!container) { return }
-    
+
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
 
     try {
-        const respuesta = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=191528030c357419329af1198edbcb24&language=es-MX&page=${pagina}`);
+        const respuesta = await fetch(`http://localhost:3000/peliculas?page=${pagina}`);
         const data = await respuesta.json();
 
-        for (const pelicula of data.results) {
-            const poster = crearCarta(pelicula.title, `https://image.tmdb.org/t/p/w500${pelicula.poster_path}`, pelicula.id, "Peliculas");
-
+        for (const pelicula of data) {
+            const poster = crearCarta(pelicula.TITULO_PS, `https://image.tmdb.org/t/p/w500${pelicula.URL_IMAGEN}`, pelicula.ID_PS, "Peliculas");
             container.appendChild(poster);
         }
     } catch (error) {
@@ -99,11 +95,11 @@ async function cargarSeries() {
     }
 
     try {
-        const respuesta = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=191528030c357419329af1198edbcb24&language=es-MX&page=${pagina}`);
+        const respuesta = await fetch(`http://localhost:3000/series?page=${pagina}`);
         const data = await respuesta.json();
 
-        for (const serie of data.results) {
-            const poster = crearCarta(serie.name, `https://image.tmdb.org/t/p/w500${serie.poster_path}`, serie.id, "Series");
+        for (const serie of data) {
+            const poster = crearCarta(serie.TITULO_PS, `https://image.tmdb.org/t/p/w500${serie.URL_IMAGEN}`, serie.ID_PS, "Series");
             
             container.appendChild(poster);
         }

@@ -12,8 +12,31 @@ function verificarDatos() {
     const confirmarContraRegistro = $("ConfirmarContraseña");
 
     if (contraRegistro.value !== confirmarContraRegistro.value) {
-        alert("ERROR EN CONTRAS");
+        alert("Error en contraseñas");
     }
 }
+
+$("formRegistro").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const nombre = $("Nombre").value;
+    const apellido = $("Apellido").value;
+    const email = $("Email").value;
+    const passwd = $("Password").value;
+
+    const response = await fetch("/registro", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, apellido, email, passwd })
+    });
+
+    const result = await response.json();
+    if (response.ok) {
+        alert("Registro exitoso");
+        window.location.href = "login.html";
+    } else {
+        alert(result.error || "Error en el registro");
+    }
+});
 
 btnRegistro.addEventListener("click", verificarDatos);

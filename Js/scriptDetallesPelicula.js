@@ -8,22 +8,34 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (idPelicula) {
         try {
-            const respuesta = await fetch(`https://api.themoviedb.org/3/movie/${idPelicula}?api_key=191528030c357419329af1198edbcb24&language=es-MX`);
-            const data = await respuesta.json();
+            const respuesta = await fetch(`http://localhost:3000/peliculas/${idPelicula}`);
+            const datos = await respuesta.json();
+            const data = datos[0];
 
-            $("tituloPelicula").textContent = data.title;
-            $("posterPelicula").setAttribute("src", `https://image.tmdb.org/t/p/w500${data.poster_path}`);
-            $("posterPelicula").setAttribute("alt", data.title);
-            $("descripcionPelicula").textContent = data.overview;
-            $("fechaLanzamiento").textContent = `Fecha de lanzamiento: ${data.release_date}`;
-            data.genres.forEach(genre => {
-                const generoElemento = document.createElement("span");
-                generoElemento.textContent = genre.name + " ";
-                $("generos").appendChild(generoElemento);
-            });
+            $("tituloPelicula").textContent = data.TITULO_PS;
+            $("posterPelicula").setAttribute("src", `https://image.tmdb.org/t/p/w500${data.URL_IMAGEN}`);
+            $("posterPelicula").setAttribute("alt", data.TITULO_PS);
+            $("descripcionPelicula").textContent = data.SINOPSIS;
+            $("fechaLanzamiento").textContent = `Fecha de lanzamiento: ${data.FECHA_LANZAMIENTO}`;
+            generos(idPelicula);
 
         } catch (error) {
             console.error("Error al cargar los detalles de la película: ", error);
         }
     }
 });
+
+function generos(id) {
+    fetch(`http://localhost:3000/genero/${id}`)
+    .then(response => response.json())
+    .then(data => {
+        for (const genero of data) {
+            const nombreGenero = document.createElement("span");
+            nombreGenero.textContent = genero.nombre + " ";
+            $("generos").appendChild(nombreGenero);
+        }
+    })
+    .catch(error => {
+        console.log("Error:", error.message);
+    });
+};

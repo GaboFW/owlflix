@@ -1,0 +1,23 @@
+{
+  "name": "owlflix",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">\r   <img src=\"https://github.com/GaboFW/owlflix/blob/main/Imagenes/Logo123.png\" alt=\"OwlFlix Logo\" width=\"200\">\r </p>",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.5",
+    "nodemon": "^3.1.7",
+    "zod": "^3.23.8"
+  }
+}
