@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" href="../Imagenes/Logo.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/style.css">
+
+    <title>OwlFlix</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container-fluid">
+                <a class="navbar-brand ms-auto d-none d-md-block" href="../index.html">
+                    <img src="../Imagenes/Logo123.png" alt="Logo" class="navbar-logo">
+                </a>
+                <div class="toggle-theme ms-auto d-none d-md-block">
+                    <img id="imagen-modo" src="../Imagenes/Cambiar Modo.png" onclick="cambiarModo()">
+                </div>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                            <img src="../Imagenes/Logo123.png" alt="Logo" class="navbar-logo">
+                        </h5>
+                        <div class="toggle-theme">
+                            <img id="imagen-modo" src="../Imagenes/Cambiar Modo.png" onclick="cambiarModo()">
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body d-flex justify-content-end">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item d-lg-none">
+                                <a class="nav-link mx-lg-2 fs-2 text" href="../index.html">Home</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="peliculas.html?page=1">Peliculas</a></li>
+                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="series.html?page=1">Series</a></li>
+                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="miembros.html">Miembros</a></li>
+                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="about.html">About</a></li>
+                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="contacto.html">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="input-group rounded">
+                        <input type="search" id="search-bar" class="form-control rounded results" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
+                        <button id="search-button" class="btn btn-primary">Buscar</button>
+                    </div>
+                    <div id="results"></div>
+                    <div class="carrito ms-3">
+                        <img src="../Imagenes/Carrito.png" alt="Carrito" class="ms-3">
+                    </div>
+                    <div class="userIcon ms-3">
+                        <a href="login.html"><img src="../Imagenes/UserIcon.png" alt="UserIcon"></a>
+                    </div>
+                    <button class="navbar-toggler ms-3" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="carritoContainer" class="carrito-container">
+            <div class="carrito-item">
+                <img src="https://image.tmdb.org/t/p/w500/9TFSqghEHrlBMRR63yTx80Orxva.jpg" alt="Deadpool & Wolverine">
+                <div class="carrito-item-info">
+                    <p class="tituloCarrito">Deadpool & Wolverine</p>
+                </div>
+                <div class="carrito-item-actions">
+                    <a href="#" onclick="eliminarItem(this)">Eliminar</a>
+                    <a href="#" onclick="comprarAhora(this)">Comprar Ahora</a>
+                </div>
+                <div class="carrito-item-price">$1000</div>
+            </div>
+
+            <div class="carrito-summary-container">
+                <p><a href="#" onclick="aplicarDescuento()">Ingresar código de descuento</a></p>
+                <p class="carrito-summary-total" id="total">Total: $2000</p>
+                <div id="feedback" class="feedback"></div>
+                <div class="carrito-summary-button">
+                    <button class="btn btn-primary" onclick="continuarCompra()">Continuar compra</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-body-tertiary text-center text-md-start" id="homeFooter">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <img src="../Imagenes/Logo123.png" alt="Logo" id="logoFooter">
+                    <p>Tu destino para ver películas y series online en HD. Disfruta de una gran variedad. Estas usando el tema Owl-DarkRoom.</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0 d-flex justify-content-center flex-column">
+                    <h5 class="text-uppercase">Secciones</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="miembros.html" class="textoA text-body">Miembros</a>
+                        </li>
+                        <li>
+                            <a href="about.html" class= "textoA text-body">About</a>
+                        </li>
+                        <li>
+                            <a href="contacto.html" class="textoA text-body">Contacto</a>
+                        </li>
+                        <li>
+                            <a href="faq.html" class="textoA text-body">FAQs</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0 d-flex justify-content-center flex-column" id="divImagenes">
+                    <h5 class="text-uppercase mb-0">Redes</h5>
+                    <a href="https://www.whatsapp.com/"><img src="../Imagenes/whatsapp-icon.png" alt="Whatsapp"></a>
+                    <a href="https://www.instagram.com/"><img src="../Imagenes/instagram-icon.png" alt="Instagram"></a>
+                    <a href="https://www.linkedin.com/"><img src="../Imagenes/linkedin-icon.png" alt="Linkedin"></a>
+                </div>
+            </div>
+        </div>
+        <div id="divDerechos" class="text-center mt-4">
+            <p class="text-center" id="derechosReservados">® Derechos reservados alumnos UTN ®</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+
+    <script src="/Js/scriptHomeBusqueda.js"></script>
+    <script src="/Js/scriptCambiarModo.js"></script>
+    <script src="/Js/carrito.js"></script>
+
+</body>
+</html>

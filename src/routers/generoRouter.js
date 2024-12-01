@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const generoController = require('../controllers/generoController.js');
+const generoController = require('../controllers/generoController');
 
 router.get('/:id', generoController.traerGeneroId);
 

@@ -22,11 +22,9 @@ const crearUsuario = async (req, res) => {
     catch (error) {
         res.status(401).json({ message: error.message });
     }
-
-    console.log("Registro");
 }
 
-const inciarSesion = async (req, res) => {
+const iniciarSesion = async (req, res) => {
     try {
         const {email, passwd} = req.body;
 
@@ -38,14 +36,15 @@ const inciarSesion = async (req, res) => {
         const usuario = usuarioActivo[0];
 
         const isMatch = await bcrypt.compare(passwd, usuario.PASSWD);
+
         if (!isMatch) {
             return req.status(401).json({ message: "Credenciales no validas" });
         }
 
-        const token = jwt.sign({ id: usuario.ID_USUARIO }, process.env.SECRET_KEY, { expiresIn: '30m'}); // VER QUE ONDA!
+        const token = jwt.sign({ id: usuario.ID_USUARIO }, process.env.SECRET_KEY, { expiresIn: '720h'}); // VER QUE ONDA!
         res.setHeader("Authorization", `Bearer ${token}`);
 
-        res.json({ message: "Inicio de sesión exitoso", userId: usuario.ID_USUARIO });
+        res.json({ message: "Inicio de sesión exitoso", userId: usuario.ID_USUARIO, data: token });
     }
     catch (error) {
         res.status(500).json({ error: "Error en el servidor" });
@@ -58,6 +57,6 @@ const logout = (req, res) => {
 
 module.exports = {
     crearUsuario,
-    inciarSesion,
+    iniciarSesion,
     logout
 };

@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const authenticationToken = (req, res) => {
+const authenticationToken = (req, res, next) => {
     const token = req.headers['authorization']?.split(' ')[1];
 
     if (!token) {
@@ -8,10 +8,11 @@ const authenticationToken = (req, res) => {
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET || process.env.SECRET_KEY);
+        const decoded = jwt.verify(token, process.env.SECRET_KEY);
         req.user = decoded;
 
-        return res.json({ loggedIn: true, user: decoded });
+        next();
+        // return res.json({ loggedIn: true, user: decoded });
     }
     catch (error) {
         return res.status(401).json({ loggedIn: false, error: error.message });

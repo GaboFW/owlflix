@@ -584,6 +584,97 @@ body {
     cursor: pointer;
 }
 
+/* Carrito */
+.carrito-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: var(--colorMain);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.carrito-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.carrito-item:last-child {
+    border-bottom: none;
+}
+
+.carrito-item img {
+    width: 70px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.carrito-item-info {
+    flex: 1;
+    margin-left: 15px;
+    font-size: 20px;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+.carrito-item-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.carrito-item-actions a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 20px;
+    margin-right: 25px;
+}
+
+.carrito-item-actions a:hover {
+    text-decoration: underline;
+}
+
+.carrito-item-price {
+    font-weight: bold;
+    font-size: 20px;
+    color: whitesmoke;
+}
+
+.carrito-summary-container {
+    margin-top: 20px;
+    background-color: var(--colorMain);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.carrito-summary-container a {
+    font-size: 20px;
+}
+
+.carrito-summary-container p {
+    color: whitesmoke;
+    margin: 5px 0;
+    font-size: 20px;
+}
+
+.carrito-summary-total {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.carrito-summary-button button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
 /* Demas */
 .mensajeSinResultados {
     text-align: center;

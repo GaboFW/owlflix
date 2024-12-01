@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Compra</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .confirmacion-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #f4f4f4;
+        }
+
+        .datos-pago, .resumen-compra {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .datos-pago h2, .resumen-compra h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .datos-pago label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .datos-pago input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .boton-comprar {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .boton-comprar:hover {
+            background-color: #218838;
+        }
+
+        .resumen-compra p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .resumen-compra .total {
+            font-weight: bold;
+            font-size: 18px;
+            text-align: right;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmacion-container">
+        <!-- Formulario de datos de pago -->
+        <div class="datos-pago">
+            <h2>Confirmación de Compra</h2>
+            <form id="form-pago">
+                <label for="nombre">Nombre en la tarjeta</label>
+                <input type="text" id="nombre" placeholder="Juan Pérez" required>
+
+                <label for="tarjeta">Número de tarjeta</label>
+                <input type="text" id="tarjeta" placeholder="1234 5678 9123 4567" required>
+
+                <label for="vencimiento">Fecha de vencimiento</label>
+                <input type="text" id="vencimiento" placeholder="MM/AA" required>
+
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" placeholder="123" required>
+
+                <button type="submit" class="boton-comprar">Finalizar Compra</button>
+            </form>
+        </div>
+
+        <!-- Resumen de compra -->
+        <div class="resumen-compra">
+            <h2>Resumen de compra</h2>
+            <div id="productos">
+                <!-- Los productos se mostrarán aquí dinámicamente -->
+            </div>
+            <div class="total" id="total-compra">
+                <!-- Total a pagar -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Obtener datos del sessionStorage
+        const productos = JSON.parse(sessionStorage.getItem('productos'));
+        const total = parseInt(sessionStorage.getItem('total')); // Total ya calculado
+        const descuentoAplicado = sessionStorage.getItem('descuento') === 'true'; // Determinar si hay descuento aplicado
+    
+        // Mostrar productos en el resumen
+        const productosDiv = document.getElementById('productos');
+        productos.forEach(producto => {
+            const p = document.createElement('p');
+            p.textContent = `${producto.name} - ${producto.price}`;
+            productosDiv.appendChild(p);
+        });
+    
+        // Mostrar el total y el descuento (si corresponde)
+        const totalDiv = document.getElementById('total-compra');
+        if (descuentoAplicado) {
+            totalDiv.innerHTML = `
+                <p>Subtotal: $2000</p>
+                <p>Descuento (DONPOZO): -$299</p>
+                <p class="total">Total: $${total}</p>
+            `;
+        } else {
+            totalDiv.innerHTML = `<p class="total">Total: $${total}</p>`;
+        }
+    
+        // Manejo del formulario
+        const formPago = document.getElementById('form-pago');
+        formPago.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Compra realizada con éxito. Gracias por tu compra.');
+            // Aquí se podría redirigir o limpiar el sessionStorage si es necesario
+            sessionStorage.clear();
+        });
+
+        // Validación en tiempo real
+        document.getElementById('tarjeta').addEventListener('input', function (e) {
+            const input = e.target;
+            let value = input.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            const blocks = [];
+
+            for (let i = 0; i < value.length; i += 4) {
+                blocks.push(value.substring(i, i + 4));
+            }
+
+            input.value = blocks.join(' ').substring(0, 19); // Limitar a 19 caracteres (16 dígitos + 3 espacios)
+
+            // Mostrar tipo de tarjeta
+            const tarjetaIcono = document.getElementById('icono-tarjeta');
+            if (/^4/.test(value)) {
+                tarjetaIcono.textContent = 'Visa';
+            } else if (/^5[1-5]/.test(value)) {
+                tarjetaIcono.textContent = 'MasterCard';
+            } else {
+                tarjetaIcono.textContent = ''; // Sin ícono
+            }
+        });
+
+        document.getElementById('vencimiento').addEventListener('input', function (e) {
+            const input = e.target;
+            let value = input.value.replace(/[^0-9]/g, '');
+            if (value.length > 2) {
+                input.value = `${value.substring(0, 2)}/${value.substring(2, 4)}`;
+            }
+        });
+
+        // Validar al enviar
+        document.getElementById('form-pago').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const tarjeta = document.getElementById('tarjeta').value.replace(/\s+/g, '');
+            const vencimiento = document.getElementById('vencimiento').value;
+            const cvv = document.getElementById('cvv').value;
+
+            if (tarjeta.length !== 16 || !/^\d+$/.test(tarjeta)) {
+                alert('Número de tarjeta inválido.');
+                return;
+            }
+
+            const [mes, anio] = vencimiento.split('/');
+            if (!mes || !anio || mes < 1 || mes > 12 || anio < new Date().getFullYear() % 100) {
+                alert('Fecha de vencimiento inválida.');
+                return;
+            }
+
+            if (cvv.length < 3 || cvv.length > 4 || !/^\d+$/.test(cvv)) {
+                alert('CVV inválido.');
+                return;
+            }
+
+            alert('Pago realizado con éxito. ¡Gracias por tu compra!');
+            sessionStorage.clear(); // Limpiar datos del carrito
+        });
+    </script>
+    
+</body>
+</html>

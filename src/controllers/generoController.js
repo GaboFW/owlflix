@@ -1,4 +1,4 @@
-const generoModel = require('../models/generoModel.js');
+const generoModel = require('../models/generoModel');
 
 const traerGeneroId = async (req, res) => {
     try {

@@ -5,7 +5,7 @@ const generoId = async (id) => {
         SELECT nombre
         FROM genero
         JOIN generos_peliculas_series ON genero.ID_GEN = generos_peliculas_series.ID_GENERO
-        WHERE generos_peliculas_series.ID_PS = ?;
+        WHERE generos_peliculas_series.ID_PS = ?
         `;
     
     const [results] = await db.query(query, id);
