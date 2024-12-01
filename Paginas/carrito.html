@@ -73,24 +73,13 @@
 
     <main>
         <div id="carritoContainer" class="carrito-container">
-            <div class="carrito-item">
-                <img src="https://image.tmdb.org/t/p/w500/9TFSqghEHrlBMRR63yTx80Orxva.jpg" alt="Deadpool & Wolverine">
-                <div class="carrito-item-info">
-                    <p class="tituloCarrito">Deadpool & Wolverine</p>
-                </div>
-                <div class="carrito-item-actions">
-                    <a href="#" onclick="eliminarItem(this)">Eliminar</a>
-                    <a href="#" onclick="comprarAhora(this)">Comprar Ahora</a>
-                </div>
-                <div class="carrito-item-price">$1000</div>
-            </div>
-
-            <div class="carrito-summary-container">
-                <p><a href="#" onclick="aplicarDescuento()">Ingresar código de descuento</a></p>
-                <p class="carrito-summary-total" id="total">Total: $2000</p>
-                <div id="feedback" class="feedback"></div>
-                <div class="carrito-summary-button">
-                    <button class="btn btn-primary" onclick="continuarCompra()">Continuar compra</button>
+            
+        </div>
+        <div class="carrito-summary-container">
+            <p><a href="#" onclick="aplicarDescuento()">Ingresar código de descuento</a></p>
+            <p class="carrito-summary-total" id="total"></p>
+            <div class="carrito-summary-button">
+                <button class="btn btn-primary" onclick="continuarCompra()">Continuar compra</button>
             </div>
         </div>
     </main>
@@ -140,7 +129,7 @@
 
     <script src="/Js/scriptHomeBusqueda.js"></script>
     <script src="/Js/scriptCambiarModo.js"></script>
-    <script src="/Js/carrito.js"></script>
+    <script src="/Js/scriptCarrito.js"></script>
 
 </body>
 </html>

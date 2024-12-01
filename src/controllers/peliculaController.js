@@ -1,4 +1,3 @@
-const { off } = require('../config/database.js');
 const peliculaModel = require('../models/peliculaModel.js');
 
 const traerPeliculas = async (req, res) => {
