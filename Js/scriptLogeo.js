@@ -59,12 +59,12 @@ async function validarSesion() {
         const data = await response.json();
 
         if (data.loggedIn) {
-            $("login-form").style.display = "none";
             $("sessionForm").style.display = "block";
+            $("login-form").style.display = "none";
         } else {
             $("login-form").style.display = "block";
             $("sessionForm").style.display = "none";
-        }
+        }      
     }
     catch (error) {
         console.error("Error verificando sesión:", error);

@@ -30,26 +30,25 @@ const iniciarSesion = async (req, res) => {
 
         const usuarioActivo = await usuarioModel.checkUsuario(email);
         if (usuarioActivo.length === 0) {
-            return req.status(401).json({ message: "Credenciales no validas" });
+            return res.status(401).json({ message: "Credenciales no válidas" });
         }
 
         const usuario = usuarioActivo[0];
 
         const isMatch = await bcrypt.compare(passwd, usuario.PASSWD);
-
         if (!isMatch) {
-            return req.status(401).json({ message: "Credenciales no validas" });
+            return res.status(401).json({ message: "Credenciales no válidas" });
         }
 
-        const token = jwt.sign({ id: usuario.ID_USUARIO }, process.env.SECRET_KEY, { expiresIn: '720h'}); // VER QUE ONDA!
+        const token = jwt.sign({ id: usuario.ID_USUARIO }, process.env.SECRET_KEY, { expiresIn: '30m' });
         res.setHeader("Authorization", `Bearer ${token}`);
 
         res.json({ message: "Inicio de sesión exitoso", userId: usuario.ID_USUARIO, data: token });
     }
     catch (error) {
-        res.status(500).json({ error: "Error en el servidor" });
+        res.status(500).json({ error: "Error en el servidor", details: error.message });
     }
-}
+};
 
 const logout = (req, res) => {
     res.status(200).json({ message: "Logout successful" });
