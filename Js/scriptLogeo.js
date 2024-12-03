@@ -29,8 +29,11 @@ async function iniciarSesion() {
 
     const response = await fetch("http://localhost:3000/usuario/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+            "Content-Type": "application/json",
+        },
         body: JSON.stringify({ email, passwd }),
+        credentials: "include",
     });
 
     const result = await response.json();

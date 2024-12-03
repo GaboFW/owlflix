@@ -2,18 +2,19 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-const cors = require('cors');
+const path = require('path');
+// const cors = require('cors');
 
-const corsOptions = {
-    origin: 'https://gabofw.github.io',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true, // Permite el uso de cookies
-};
+// const corsOptions = {
+//     origin: 'https://gabofw.github.io',
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true,
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, '../')));
+app.use(express.static(path.join(__dirname, '../')));
 
 const peliculaRouter = require('./routers/peliculaRouter');
 const serieRouter = require('./routers/serieRouter');

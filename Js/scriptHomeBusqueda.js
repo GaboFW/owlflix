@@ -18,7 +18,7 @@ function cambiarHref() {
     const repo = "owlflix";
 
     if (query) {
-        // window.location.href = `/${repo}/busqueda.html?search=${query}`;
-        window.location.href = `/busqueda.html?search=${query}`;
+        const basePath = window.location.pathname.includes(repo) ? `/${repo}` : "";
+        window.location.href = `${basePath}/busqueda.html?search=${query}`;
     }
 }
