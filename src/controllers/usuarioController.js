@@ -1,17 +1,17 @@
 require('dotenv').config();
 
 const bcrypt = require('bcryptjs');
-const {schemaUsuario} = require('../utils/validacion');
+const { schemaUsuario } = require('../utils/validacion');
 const usuarioModel = require('../models/usuarioModel');
 const jwt = require('jsonwebtoken');
 
 const crearUsuario = async (req, res) => {
     try {
-        const {nombre, apellido, email, passwd} = schemaUsuario.parse(req.body);
+        const { nombre, apellido, email, passwd } = schemaUsuario.parse(req.body);
 
         const usuarioExiste = await usuarioModel.checkUsuario(email);
         if (usuarioExiste.length > 0) {
-            return res.status(400).json({message: "El mail ya existen"});
+            return res.status(400).json({ message: "El mail ya existen" });
         }
 
         const passwdHash = await bcrypt.hash(passwd, 10);
@@ -24,9 +24,22 @@ const crearUsuario = async (req, res) => {
     }
 }
 
+const obtenerNombre = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const result = await usuarioModel.getNombreUser(id);
+        
+        res.status(201).json(result);
+    }
+    catch (error) {
+        res.status(401).json({ message: error.message });
+    }
+}
+
 const iniciarSesion = async (req, res) => {
     try {
-        const {email, passwd} = req.body;
+        const { email, passwd } = req.body;
 
         const usuarioActivo = await usuarioModel.checkUsuario(email);
         if (usuarioActivo.length === 0) {
@@ -58,5 +71,6 @@ const logout = (req, res) => {
 module.exports = {
     crearUsuario,
     iniciarSesion,
-    logout
+    logout,
+    obtenerNombre
 };

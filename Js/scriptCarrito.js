@@ -151,21 +151,21 @@ function aplicarDescuento(total) {
     return null;
 }
 
-async function eliminarDelCarrito(itemId) {
-    try {
-        const response = await fetch(`http://localhost:3000/carrito/${itemId}`, { method: "DELETE" });
-        const result = await response.json();
+// async function eliminarDelCarrito(itemId) {
+//     try {
+//         const response = await fetch(`http://localhost:3000/carrito/${itemId}`, { method: "DELETE" });
+//         const result = await response.json();
 
-        if (response.ok) {
-            alert(result.message);
-            cargarCarrito(idUsuario);
-        } else {
-            alert(result.error);
-        }
-    } catch (error) {
-        console.error("Error al eliminar del carrito:", error);
-    }
-}
+//         if (response.ok) {
+//             alert(result.message);
+//             cargarCarrito(idUsuario);
+//         } else {
+//             alert(result.error);
+//         }
+//     } catch (error) {
+//         console.error("Error al eliminar del carrito:", error);
+//     }
+// }
 
 async function idUsuario() {
     const token = localStorage.getItem("auth_token");

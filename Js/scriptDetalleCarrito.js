@@ -6,14 +6,14 @@ const productosDiv = $("productos");
 const totalDiv = $("total-compra");
 
 const carritoJSON = sessionStorage.getItem("carrito");
-console.log(carritoJSON);
 const totalConDescuento = sessionStorage.getItem("totalConDescuento");
+
+let userId = idUsuario();
 
 let total = 0;
 
 if (carritoJSON) {
     const carrito = JSON.parse(carritoJSON);
-
     carrito.forEach(item => {
         const p = document.createElement("p");
         p.textContent = `${item.titulo_ps} (${item.cantidad}) - $${item.precio}`;
@@ -37,20 +37,16 @@ if (carritoJSON) {
     }
 }
 
-// const descuentoAplicado = sessionStorage.getItem("descuento") === "true"; // Determinar si hay descuento aplicado
-
-// Manejo del formulario
 const formPago = $("form-pago");
 formPago.addEventListener("submit", function (e) {
     e.preventDefault();
     alert("Compra realizada con éxito. Gracias por tu compra.");
-    // Aquí se podría redirigir o limpiar el sessionStorage si es necesario
+
     sessionStorage.clear();
 
-    // Llamar al delete del carrito
+    eliminarDelCarrito(userId);
 });
 
-// Validación en tiempo real
 $("tarjeta").addEventListener("input", function (e) {
     const input = e.target;
     let value = input.value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
@@ -60,17 +56,7 @@ $("tarjeta").addEventListener("input", function (e) {
         blocks.push(value.substring(i, i + 4));
     }
 
-    input.value = blocks.join(" ").substring(0, 19); // Limitar a 19 caracteres (16 dígitos + 3 espacios)
-
-    // Mostrar tipo de tarjeta
-    const tarjetaIcono = $("icono-tarjeta");
-    if (/^4/.test(value)) {
-        tarjetaIcono.textContent = "Visa";
-    } else if (/^5[1-5]/.test(value)) {
-        tarjetaIcono.textContent = "MasterCard";
-    } else {
-        tarjetaIcono.textContent = ""; // Sin ícono
-    }
+    input.value = blocks.join(" ").substring(0, 19);
 });
 
 $("vencimiento").addEventListener("input", function (e) {
@@ -81,7 +67,6 @@ $("vencimiento").addEventListener("input", function (e) {
     }
 });
 
-// Validar al enviar
 $("form-pago").addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -106,7 +91,38 @@ $("form-pago").addEventListener("submit", function (e) {
     }
 
     alert("Pago realizado con éxito. ¡Gracias por tu compra!");
-    sessionStorage.clear(); // Limpiar datos del carrito
+    sessionStorage.clear();
 
-    // Llamar el delete para la db
+    eliminarDelCarrito(userId);
+
+    window.location.href = "carrito.html"; 
 });
+
+async function eliminarDelCarrito(id) {
+    try {
+        const response = await fetch(`http://localhost:3000/carrito/${id}`, { method: "DELETE" });
+        const result = await response.json();
+
+        if (response.ok) {
+            cargarCarrito(idUsuario());
+        } else {
+            alert(result.error);
+        }
+    } catch (error) {
+        console.error("Error al eliminar del carrito:", error);
+    }
+}
+
+function idUsuario() {
+    const token = localStorage.getItem("auth_token");
+
+    if (token) {
+        const decoded = jwt_decode(token);
+    
+        const userId = decoded.id;
+
+        return userId;
+    } else {
+        console.log('No hay token disponible');
+    }
+}

@@ -18,7 +18,17 @@ const checkUsuario = async (email) => {
     return results;
 }
 
+const getNombreUser = async (id) => {
+    const query = `SELECT nombre FROM usuario WHERE ID = ?`;
+    const values = [id];
+
+    const [results] = await db.query(query, values);
+
+    return results;
+}
+
 module.exports = {
     insertarUsuario,
-    checkUsuario
+    checkUsuario,
+    getNombreUser
 };

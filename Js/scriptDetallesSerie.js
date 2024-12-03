@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
     const idSerie = params.get("id");
 
-    console.log(idSerie);
+    $("btnCarrito").addEventListener("submit", agregarAlCarrito(idSerie, idUsuario()));
 
     if (idSerie) {
         try {
@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             $("posterSerie").setAttribute("src", `https://image.tmdb.org/t/p/w500${data.URL_IMAGEN}`);
             $("posterSerie").setAttribute("alt", data.TITULO_PS);
             $("descripcionSerie").textContent = data.SINOPSIS;
-            // $("temporadas").textContent = data.seasons[0].season_number;
             generos(idSerie);
 
         } catch (error) {
@@ -41,3 +40,31 @@ function generos(id) {
         console.log("Error:", error.message);
     });
 };
+
+function idUsuario() {
+    const token = localStorage.getItem("auth_token");
+    if (token) {
+        const decoded = jwt_decode(token);
+        const id = decoded.id;
+
+        return id;
+    }
+    else {
+        console.error('Token no encontrado');
+    }
+}
+
+async function agregarAlCarrito(peliculaId, usuarioId) {
+    try {
+        const response = await fetch("http://localhost:3000/carrito", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ usuarioId, psId: peliculaId })
+        });
+
+        const result = await response.json();
+
+    } catch (error) {
+        console.error("Error al agregar al carrito:", error);
+    }
+}

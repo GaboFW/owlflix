@@ -329,7 +329,7 @@ body {
     width: 80%;
     border-radius: 5px;
     cursor: pointer;
-    content: "$5";
+    content: "$1000";
     transition: background-color 0.3s ease;
 }
 
@@ -343,7 +343,7 @@ body {
 }
 
 .btn-precio::before {
-    content: "$5 ";
+    content: "$1000 ";
     color: black;
 }
 

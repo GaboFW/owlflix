@@ -12,12 +12,14 @@ const serieRouter = require('./routers/serieRouter');
 const generoRouter = require('./routers/generoRouter');
 const usuarioRouter = require('./routers/usuarioRouter');
 const carritoRouter = require('./routers/carritoRouter');
+const comprobanteRouter = require('./routers/comprobanteRouter');
 
 app.use('/peliculas', peliculaRouter);
 app.use('/series', serieRouter);
 app.use('/genero', generoRouter);
 app.use('/usuario', usuarioRouter);
-app.use('/carrito', carritoRouter)
+app.use('/carrito', carritoRouter);
+app.use('/comprobante', comprobanteRouter);
 
 const PORT = 3000;
 app.listen(PORT, () => {
