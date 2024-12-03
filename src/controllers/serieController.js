@@ -1,4 +1,4 @@
-const serieModel = require('../models/serieModel.js');
+const serieModel = require('../models/serieModel');
 
 const traerSeries = async (req, res) => {
     try {

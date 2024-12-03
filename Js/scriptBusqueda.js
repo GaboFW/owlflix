@@ -16,21 +16,14 @@ document.addEventListener("DOMContentLoaded", function() {
  * @param {*} query 
  */
 function fetchResults(query) {
-    // const moviesApiUrl = `https://api.themoviedb.org/3/search/movie?api_key=191528030c357419329af1198edbcb24&language=es-MX&query=${query}`;
-    const moviesApiUrl = `http://localhost:3000/peliculas/${query}`;
-    // const seriesApiUrl = `https://api.themoviedb.org/3/search/tv?api_key=191528030c357419329af1198edbcb24&language=es-MX&query=${query}`;
-    const seriesApiUrl = `http://localhost:3000/series/${query}`;
+    const seriePelicula = `http://localhost:3000/peliculas-series/${query}`;
 
-    Promise.all([
-        fetch(moviesApiUrl)
-        .then(response => response.json())
-        .then(data => data.results),
+    fetch(seriePelicula)
+    .then(response => response.json())
+    .then(data => {
+        const movies = data.filter(item => item.categoria === "PELICULA");
+        const series = data.filter(item => item.categoria === "SERIE");
 
-        fetch(seriesApiUrl)
-        .then(response => response.json())
-        .then(data => data.results)
-    ])
-    .then(([movies, series]) => {
         mostrarResultados(movies, series);
     })
     .catch(error => {
@@ -62,16 +55,16 @@ function mostrarResultados(movies, series) {
         divElement.className = "divSearch";
 
         const imgElement = document.createElement("img");
-        imgElement.src = `https://image.tmdb.org/t/p/w500${movie.URL_IMAGEN}`;
-        imgElement.alt = movie.TITULO_PS;
+        imgElement.src = `https://image.tmdb.org/t/p/w500${movie.url_imagen}`;
+        imgElement.alt = movie.titulo_ps;
         imgElement.className = "imgSearch";
 
         const titleElement = document.createElement("h3");
-        titleElement.textContent = movie.TITULO_PS;
+        titleElement.textContent = movie.titulo_ps;
         titleElement.className = "titleSearch";
 
         const aElement = document.createElement("a");
-        aElement.setAttribute("href", `Paginas/detallesPeliculas.html?id=${movie.ID_PS}`);
+        aElement.setAttribute("href", `Paginas/detallesPeliculas.html?id=${movie.id_ps}`);
         aElement.className = "aSearch";
 
         aElement.appendChild(imgElement);
@@ -86,16 +79,16 @@ function mostrarResultados(movies, series) {
         divElement.className = "divSearch";
 
         const imgElement = document.createElement("img");
-        imgElement.src = `https://image.tmdb.org/t/p/w500${serie.URL_IMAGEN}`;
-        imgElement.alt = serie.TITULO_PS;
+        imgElement.src = `https://image.tmdb.org/t/p/w500${serie.url_imagen}`;
+        imgElement.alt = serie.titulo_ps;
         imgElement.className = "imgSearch";
 
         const nameElement = document.createElement("h3");
-        nameElement.textContent = serie.TITULO_PS;
+        nameElement.textContent = serie.titulo_ps;
         nameElement.className = "titleSearch";
 
         const aElement = document.createElement("a");
-        aElement.setAttribute("href", `Paginas/detallesSeries.html?id=${serie.ID_PS}`);
+        aElement.setAttribute("href", `Paginas/detallesSeries.html?id=${serie.id_ps}`);
         aElement.className = "aSearch";
 
         aElement.appendChild(imgElement);

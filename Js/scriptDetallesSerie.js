@@ -62,8 +62,6 @@ async function agregarAlCarrito(peliculaId, usuarioId) {
             body: JSON.stringify({ usuarioId, psId: peliculaId })
         });
 
-        const result = await response.json();
-
     } catch (error) {
         console.error("Error al agregar al carrito:", error);
     }
