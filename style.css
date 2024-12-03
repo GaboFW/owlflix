@@ -635,6 +635,12 @@ body {
     margin-right: 25px;
 }
 
+.carrito-item-actions span {
+    color: whitesmoke;
+    font-size: 20px;
+    margin-right: 25px;
+}
+
 .carrito-item-actions a:hover {
     text-decoration: underline;
 }

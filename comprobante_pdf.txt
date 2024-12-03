@@ -11,7 +11,7 @@ app.post('/api/generar-comprobante', (req, res) => {
     const datos = req.body; // Recibe los datos del frontend
 
     const doc = new PDFDocument();
-    const filePath = `comprobante_${Date.now()}.pdf`;
+    const filePath = `comprobante_Owlflix_${Date.now()}.pdf`;
 
     // Crear y guardar el PDF
     doc.pipe(fs.createWriteStream(filePath));
@@ -24,14 +24,14 @@ app.post('/api/generar-comprobante', (req, res) => {
     doc.fontSize(14).text('Productos:', { underline: true });
 
     datos.productos.forEach(producto => {
-        doc.fontSize(12).text(`${producto.name} - $${producto.price}`);
+        doc.fontSize(12).text(`${producto.name} - $${producto.price}`); // Deadpool & Wolverine: $1000
     });
 
     doc.moveDown();
-    doc.fontSize(12).text(`Descuento: -$${datos.descuento}`);
+    doc.fontSize(12).text(`Descuento: -$${datos.descuento}`); // Descuento: $
     doc.fontSize(14).text(`Total: $${datos.total}`, { align: 'right' });
     doc.moveDown();
-    doc.fontSize(10).text('Gracias por su compra.', { align: 'center' });
+    doc.fontSize(10).text('Gracias por su compra en Owlflix.', { align: 'center' });
     doc.end();
 
     // Enviar el archivo al cliente

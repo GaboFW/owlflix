@@ -40,7 +40,8 @@ const iniciarSesion = async (req, res) => {
             return res.status(401).json({ message: "Credenciales no válidas" });
         }
 
-        const token = jwt.sign({ id: usuario.ID_USUARIO }, process.env.SECRET_KEY, { expiresIn: '30m' });
+        const token = jwt.sign({ id: usuario.ID }, process.env.SECRET_KEY, { expiresIn: '720h' });
+
         res.setHeader("Authorization", `Bearer ${token}`);
 
         res.json({ message: "Inicio de sesión exitoso", userId: usuario.ID_USUARIO, data: token });

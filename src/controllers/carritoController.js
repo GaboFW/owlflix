@@ -15,7 +15,7 @@ const insertarCarrito = async (req, res) => {
 
 const obtenerCarritoId = async (req, res) => {
     try {
-        const id = req.params;
+        const { id } = req.params;
 
         const results = await carritoModel.getCarritoId(id);
 
@@ -26,26 +26,13 @@ const obtenerCarritoId = async (req, res) => {
     }
 }
 
-const obtenerUsuario = async (req, res) => {
-    try {
-        const usuarioId = req.params;
-
-        const results = await carritoModel.getUsuario(usuarioId);
-
-        res.status(201).json(results);
-    }
-    catch (error) {
-        res.status(500).json({ error: "Error en el servidor" });
-    }
-}
-
 const eliminarCarritoId = async (req, res) => {
     try {
-        const id = req.params;
+        const { id } = req.params;
 
         const results = await carritoModel.deleteCarritoId(id);
 
-        res.status(201).json(results);
+        res.status(201).json({ result: results.affectedRows });
     }
     catch (error) {
         res.status(500).json({ error: "Error en el servidor" });
@@ -55,6 +42,5 @@ const eliminarCarritoId = async (req, res) => {
 module.exports = {
     insertarCarrito,
     obtenerCarritoId,
-    obtenerUsuario,
     eliminarCarritoId
 };

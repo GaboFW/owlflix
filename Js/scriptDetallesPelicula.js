@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
     const idPelicula = params.get("id");
 
+    $("btnCarrito").addEventListener("submit", agregarAlCarrito(idPelicula, idUsuario()));
+
     if (idPelicula) {
         try {
             const respuesta = await fetch(`http://localhost:3000/peliculas/${idPelicula}`);
@@ -39,3 +41,31 @@ function generos(id) {
         console.log("Error:", error.message);
     });
 };
+
+function idUsuario() {
+    const token = localStorage.getItem("auth_token");
+    if (token) {
+        const decoded = jwt_decode(token);
+        const id = decoded.id;
+
+        return id;
+    }
+    else {
+        console.error('Token no encontrado');
+    }
+}
+
+async function agregarAlCarrito(peliculaId, usuarioId) {
+    try {
+        const response = await fetch("http://localhost:3000/carrito", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ usuarioId, psId: peliculaId })
+        });
+
+        const result = await response.json();
+
+    } catch (error) {
+        console.error("Error al agregar al carrito:", error);
+    }
+}

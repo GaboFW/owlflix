@@ -76,10 +76,10 @@
             
         </div>
         <div class="carrito-summary-container">
-            <p><a href="#" onclick="aplicarDescuento()">Ingresar código de descuento</a></p>
+            <p><a href="#" id="aplicarDescuento">Ingresar código de descuento</a></p>
             <p class="carrito-summary-total" id="total"></p>
             <div class="carrito-summary-button">
-                <button class="btn btn-primary" onclick="continuarCompra()">Continuar compra</button>
+                <a href="confirmacion.html"><button id="continuarCompra" class="btn btn-primary">Continuar compra</button></a>
             </div>
         </div>
     </main>
@@ -126,6 +126,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
 
     <script src="/Js/scriptHomeBusqueda.js"></script>
     <script src="/Js/scriptCambiarModo.js"></script>
