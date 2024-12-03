@@ -22,7 +22,8 @@
   <li><img src="https://img.icons8.com/color/48/000000/css3.png" alt="CSS Icon" title="CSS3"> CSS: Diseño y estilo </li>
   <li><img src="https://img.icons8.com/color/48/000000/javascript.png" alt="JavaScript Icon" title="JavaScript"> JavaScript: Logica y dinamismo </li>
   <li><img src="https://img.icons8.com/color/48/000000/bootstrap.png" alt="Bootstrap Icon" title="Bootstrap"> Bootstrap: Diseño responsive </li>
-  <li><img src="https://img.icons8.com/color/48/000000/themoviedb.png" alt="API Icon" title="The Movie Database API"> The Database Movie: API de peliculas y series </li>
+  <li><img src="https://icon-icons.com/icons2/1381/PNG/48/mysqlworkbench_93532.png" alt="MySQL Icon" title="MySQL"> MySQL Workbrench: Base de datos de la web </li>
+  <li><img src="https://img.icons8.com/color/48/000000/nodejs.png" alt="Node.js" title="Node.js"> Node: BackEnd de la web</li>
 </ul>
 
 ---
