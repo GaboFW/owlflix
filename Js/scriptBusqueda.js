@@ -40,7 +40,7 @@ function fetchResults(query) {
 function mostrarResultados(movies, series) {
     const resultadosContainer = $("resultadosBusqueda");
 
-    if (movies.length === 0 && series.length === 0) {
+    if (movies[0] === 0 && series[0] === 0) {
         const mensajeElement = document.createElement("h3");
         mensajeElement.textContent = "No se encontraron resultados";
         mensajeElement.className = "mensajeSinResultados";
