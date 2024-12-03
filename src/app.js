@@ -3,6 +3,14 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
+// const cors = require('cors');
+
+// app.use(cors({
+//     origin: 'https://gabofw.github.io',
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true
+// }));
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../')));
