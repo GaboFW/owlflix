@@ -2,16 +2,16 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-// const path = require('path');
 const cors = require('cors');
 
-app.use(cors({
+const corsOptions = {
     origin: 'https://gabofw.github.io',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
-}));
+    credentials: true, // Permite el uso de cookies
+};
 
+app.use(cors(corsOptions));
 app.use(express.json());
 // app.use(express.static(path.join(__dirname, '../')));
 

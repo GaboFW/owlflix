@@ -16,6 +16,10 @@ document.addEventListener("DOMContentLoaded", function() {
  * @param {*} query 
  */
 function fetchResults(query) {
+    if (!query) {
+        return;
+    }
+
     const seriePelicula = `http://localhost:3000/peliculas-series/${query}`;
 
     fetch(seriePelicula)
@@ -40,7 +44,7 @@ function fetchResults(query) {
 function mostrarResultados(movies, series) {
     const resultadosContainer = $("resultadosBusqueda");
 
-    if (movies[0] === 0 && series[0] === 0) {
+    if (movies.length === 0 && series.length === 0) {
         const mensajeElement = document.createElement("h3");
         mensajeElement.textContent = "No se encontraron resultados";
         mensajeElement.className = "mensajeSinResultados";
