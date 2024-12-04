@@ -8,9 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 $("formLogin").addEventListener("submit", async (e) => {
     e.preventDefault();
-
+    console.log("Submit detectado, llamando a iniciarSesion()");
     iniciarSesion();
 });
+
+console.log($("formLogin"));
 
 $("logoutButton").addEventListener("click", async () => {
     await fetch("http://localhost:3000/usuario/logout", { 
@@ -39,6 +41,8 @@ async function iniciarSesion() {
     const result = await response.json();
     if (response.ok) {
         const token = response.headers.get("Authorization")?.split(" ")[1];
+
+        console.log(token);
 
         if (token) {
             localStorage.setItem("auth_token", token);

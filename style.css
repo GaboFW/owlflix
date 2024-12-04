@@ -919,4 +919,10 @@ body {
     #divImagenes {
         align-items: center;
     }
+
+    .carrito-item-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
 }
