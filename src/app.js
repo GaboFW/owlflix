@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-// const path = require('path');
 const cors = require('cors');
 
 const corsOptions = {
@@ -15,7 +14,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, '../')));
 
 const peliculaRouter = require('./routers/peliculaRouter');
 const serieRouter = require('./routers/serieRouter');
