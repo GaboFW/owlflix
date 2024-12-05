@@ -40,9 +40,7 @@ async function iniciarSesion() {
 
     const result = await response.json();
     if (response.ok) {
-        // const token = response.headers.get("Authorization")?.split(" ")[1];
-
-        const token = response.headers['authorization']?.split(' ')[1];
+        const token = response.headers.get("Authorization")?.split(" ")[1];
 
         console.log(token);
 

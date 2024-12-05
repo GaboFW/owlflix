@@ -9,7 +9,8 @@ const corsOptions = {
     origin: 'https://owlflix.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
+    credentials: true,
+    exposedHeaders: ['Authorization']
 };
 
 app.use(cors(corsOptions));
