@@ -68,18 +68,12 @@ async function cargarCarrito(usuarioId) {
             const aEliminar = document.createElement("a");
             aEliminar.textContent = "Eliminar";
             aEliminar.setAttribute("href", "#");
-            aEliminar.addEventListener("click", () => eliminarItem());
-            
-            const aComprarAhora = document.createElement("a");
-            aComprarAhora.textContent = "Comprar Ahora";
-            aComprarAhora.setAttribute("href", "#");
-            aComprarAhora.addEventListener("click", () => comprarAhora());
+            aEliminar.addEventListener("click", () => eliminarItem(usuarioId, item.ps_id, item.cantidad));
 
             const cantidad = document.createElement("span");
             cantidad.textContent = `${item.cantidad}`;
 
             divAccion.appendChild(aEliminar);
-            divAccion.appendChild(aComprarAhora);
             divAccion.appendChild(cantidad);
 
             const divPrecio = document.createElement("div");
@@ -104,24 +98,38 @@ async function cargarCarrito(usuarioId) {
     }
 }
 
-function comprarAhora(element) {
-    // const item = element.closest(".carrito-item");
-    // const name = item.getAttribute("data-name");
-    // const price = item.getAttribute("data-price");
+async function eliminarItem(userId, idItem, cantidadActual) {
+    try {
+        if (cantidadActual === 1){
+            const response = await fetch(`http://localhost:3000/carrito/${userId}/${idItem}`, {
+                method: "DELETE"
+            });
+    
+            if (response.ok) {
+                cargarCarrito(userId);
+            } else {
+                const result = await response.json();
+    
+                console.error(result.error);
+            }
+        } else {
+            const response = await fetch(`http://localhost:3000/carrito/${userId}/${idItem}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ cantidad: cantidadActual - 1 })
+            });
 
-    // const confirmar = confirm(`¿Deseas continuar con la compra de: ${name} por $${price}?`);
-
-    // if (confirmar) {
-    //     window.location.href = `confirmacion.html?producto=${encodeURIComponent(name)}&precio=${price}`;
-    // } else {
-    //     alert("Compra cancelada. Sigues en el carrito.");
-    // }
-
-    alert("Comprar Ahora");
-}
-
-function eliminarItem() {
-    alert("Eliminar");
+            if (response.ok) {
+                cargarCarrito(userId);
+            } else {
+                const result = await response.json();
+                console.error(result.error);
+            }
+        }
+    }
+    catch (error) {
+        console.error("Error al eliminar producto", error);
+    }
 }
 
 function aplicarDescuento(total) {
@@ -150,22 +158,6 @@ function aplicarDescuento(total) {
 
     return null;
 }
-
-// async function eliminarDelCarrito(itemId) {
-//     try {
-//         const response = await fetch(`http://localhost:3000/carrito/${itemId}`, { method: "DELETE" });
-//         const result = await response.json();
-
-//         if (response.ok) {
-//             alert(result.message);
-//             cargarCarrito(idUsuario);
-//         } else {
-//             alert(result.error);
-//         }
-//     } catch (error) {
-//         console.error("Error al eliminar del carrito:", error);
-//     }
-// }
 
 async function idUsuario() {
     const token = localStorage.getItem("auth_token");

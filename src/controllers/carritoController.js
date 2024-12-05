@@ -39,8 +39,37 @@ const eliminarCarritoId = async (req, res) => {
     }
 }
 
+const eliminarIdItem = async (req, res) => {
+    try {
+        const { userId, idItem } = req.params;
+
+        const results = await carritoModel.deleteIdItem(userId, idItem);
+
+        res.status(201).json({ result: results.affectedRows });
+    }
+    catch (error) {
+        res.status(500).json({ error: "Error en el servidor" });
+    }
+}
+
+const putCantidad = async (req, res) => {
+    try {
+        const { userId, idItem } = req.params;
+        const { cantidad } = req.body;
+        
+        const results = await carritoModel.putCantidad(cantidad, userId, idItem);
+
+        res.status(201).json({ results: results.affectedRows });
+    }
+    catch (error) {
+        res.status(500).json({ error: "Error en el servidor" });
+    }
+}
+
 module.exports = {
     insertarCarrito,
     obtenerCarritoId,
-    eliminarCarritoId
+    eliminarCarritoId,
+    eliminarIdItem,
+    putCantidad
 };

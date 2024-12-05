@@ -16,10 +16,11 @@ const insertarCarrito = async (usuarioId, psId) => {
 
 const getCarritoId = async (usuarioId) => {
     const query = `
-    SELECT C.id, P.titulo_ps, P.url_imagen, C.precio, C.cantidad
-    FROM carrito C
-    JOIN peliculas_series P ON C.ps_id = P.id_ps
-    WHERE C.usuario_id = ?`;
+        SELECT C.id, C.ps_id, P.titulo_ps, P.url_imagen, C.precio, C.cantidad
+        FROM carrito C
+        JOIN peliculas_series P ON C.ps_id = P.id_ps
+        WHERE C.usuario_id = ?
+        `;
     const values = [usuarioId];
 
     const [results] = await db.query(query, values);
@@ -36,8 +37,28 @@ const deleteCarritoId = async (id) => {
     return results;
 }
 
+const deleteIdItem = async (userId, idItem) => {
+    const query = `DELETE FROM carrito WHERE usuario_id = ? AND ps_id = ?`;
+    const values = [userId, idItem];
+    
+    const [results] = await db.query(query, values);
+
+    return results;
+}
+
+const putCantidad = async (cantidad, userId, idItem) => {
+    const query = `UPDATE carrito SET cantidad = ?, precio = cantidad * 1000 WHERE usuario_id = ? AND ps_id = ?`;
+    const values = [cantidad, userId, idItem];
+
+    const [results] = await db.query(query, values);
+
+    return results;
+}
+
 module.exports = {
     insertarCarrito,
     getCarritoId,
-    deleteCarritoId
+    deleteCarritoId,
+    deleteIdItem,
+    putCantidad
 };

@@ -4,15 +4,18 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-const corsOptions = {
-    origin: 'https://owlflix.vercel.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-    exposedHeaders: ['Authorization']
-};
+const path = require('path');
+app.use(express.static(path.join(__dirname, '../')));
 
-app.use(cors(corsOptions));
+// const corsOptions = {
+//     origin: 'https://owlflix.vercel.app',
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true,
+//     exposedHeaders: ['Authorization']
+// };
+
+// app.use(cors(corsOptions));
 app.use(express.json());
 
 const peliculaRouter = require('./routers/peliculaRouter');
