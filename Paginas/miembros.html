@@ -38,14 +38,12 @@
                     </div>
                     <div class="offcanvas-body d-flex justify-content-end">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item d-lg-none">
-                                <a class="nav-link mx-lg-2 fs-2 text" href="../index.html">Home</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="peliculas.html">Peliculas</a></li>
-                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="series.html">Series</a></li>
-                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text active" href="miembros.html">Miembros</a></li>
-                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="about.html">About</a></li>
-                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="contacto.html">Contacto</a></li>
+                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="../index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="./peliculas.html">Peliculas</a></li>
+                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="./series.html">Series</a></li>
+                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text active" href="./miembros.html">Miembros</a></li>
+                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="./about.html">About</a></li>
+                            <li class="nav-item"><a class="nav-link mx-lg-2 fs-2 text" href="./contacto.html">Contacto</a></li>
                         </ul>
                     </div>
                 </div>
@@ -71,19 +69,19 @@
     </header>
     
     <main class="mainMiembros">
-        <div>
+        <div id="headerMiembros">
             <h2 class="text-start m-3">Hacete Miembro</h2>
             <p class="text-center">¡Apoyanos y disfruta de beneficios exclusivos! Con tu membresía, no solo nos ayudas a mantener el contenido de calidad, sino que también obtendrás acceso anticipado a nuevos estrenos, contenido exclusivo detrás de cámaras, y más.</p>
         </div>
 
-        <section class="containerMiembros d-flex justify-content-center flex-wrap">
+        <section class="containerMiembros d-flex justify-content-around flex-wrap">
             <div class="card" style="width: 18rem;">
                 <img src="../Imagenes/Logo.png" alt="Logo">
                 <div>
                     <h3>MIEMBRO 1</h3>
                     <p>Acceso anticipado a nuevos lanzamientos, recomendaciones personalizadas y la satisfacción de apoyar directamente el contenido que amas.</p>
                     <h3>$1.000 ARS</h3>
-                    <button>Hacete Miembro</button>
+                    <button id="btnMiembro1" class="miembrosBtn" data-id="2004" data-nombre="MIEMBRO 1" data-precio="1000">Hacete Miembro</button>
                 </div>
             </div>
 
@@ -93,7 +91,7 @@
                     <h3>MIEMBRO 2</h3>
                     <p>Acceso a contenido premium, estrenos antes de su lanzamiento oficial, y participa en sorteos mensuales exclusivos.</p>
                     <h3>$2.000 ARS</h3>
-                    <button>Hacete Miembro</button>
+                    <button id="btnMiembro2" class="miembrosBtn" data-id="2005" data-nombre="MIEMBRO 2" data-precio="2000">Hacete Miembro</button>
                 </div>
             </div>
 
@@ -103,7 +101,7 @@
                     <h3>MIEMBRO 3</h3>
                     <p>Acceso ilimitado a todo nuestro catálogo, experiencias exclusivas detrás de cámaras, y eventos en vivo con actores y creadores.</p>
                     <h3>$3.000 ARS</h3>
-                    <button>Hacete Miembro</button>
+                    <button id="btnMiembro3" class="miembrosBtn" data-id="2006" data-nombre="MIEMBRO 3" data-precio="3000">Hacete Miembro</button>
                 </div>
             </div>
         </section>
@@ -150,6 +148,9 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
+    <script src="../Js/scriptMiembros.js"></script>
     <script src="../Js/scriptHomeBusqueda.js"></script>
     <script src="../Js/scriptCambiarModo.js"></script>
 </body>

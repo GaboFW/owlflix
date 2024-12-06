@@ -3,6 +3,11 @@ function $(id) {
 }
 
 const swiper = new Swiper('.swiper', {
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+    },
     loop: true,
     navigation: {
         nextEl: '.swiper-button-next',
@@ -64,13 +69,11 @@ async function cargarPeliculas() {
     const container = $("sliderPelis");
 
     try {
-        // const respuesta = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=d58fdc66ad2a2f7d5380209c2a7881cc&language=es-MX&page=1`);
         const respuesta = await fetch(`http://localhost:3000/peliculas?page=1`);
         const data = await respuesta.json();
 
         const ochoPeliculas = data.slice(0, 8);
         for (const pelicula of ochoPeliculas) {
-            // const poster = crearCarta(pelicula.title, `https://image.tmdb.org/t/p/w500${pelicula.poster_path}`, pelicula.id, "Peliculas");
             const poster = crearCarta(pelicula.TITULO_PS, `https://image.tmdb.org/t/p/w500${pelicula.URL_IMAGEN}`, pelicula.ID_PS, "Peliculas");
 
             container.appendChild(poster);
@@ -88,13 +91,11 @@ async function cargarSeries() {
     const container = $("sliderSeries");
 
     try {
-        // const respuesta = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=d58fdc66ad2a2f7d5380209c2a7881cc&language=es-MX&page=1`);
         const respuesta = await fetch(`http://localhost:3000/series?page=1`);
         const data = await respuesta.json();
 
         const ochoSeries = data.slice(0, 8);
         for (const serie of ochoSeries) {
-            // const poster = crearCarta(serie.title, `https://image.tmdb.org/t/p/w500${serie.poster_path}`, serie.id, "Series");
             const poster = crearCarta(serie.TITULO_PS, `https://image.tmdb.org/t/p/w500${serie.URL_IMAGEN}`, serie.ID_PS, "Series");
 
             container.appendChild(poster);

@@ -8,11 +8,23 @@ const totalDiv = $("total-compra");
 const carritoJSON = sessionStorage.getItem("carrito");
 const totalConDescuento = sessionStorage.getItem("totalConDescuento");
 
+const miembrosNombre = sessionStorage.getItem("miembroNombre");
+const miembrosPrecio = sessionStorage.getItem("miembroPrecio");
+
 const carrito = JSON.parse(carritoJSON);
 
 let userId = idUsuario();
 
 let total = 0;
+
+if (miembrosNombre && miembrosPrecio) {
+    const planPrecio = parseFloat(miembrosPrecio);
+    const p = document.createElement("p");
+    p.textContent = `Plan: ${miembrosNombre} - $${planPrecio}`;
+    productosDiv.appendChild(p);
+
+    total += planPrecio;
+}
 
 if (carritoJSON) {
     carrito.forEach(item => {
@@ -20,7 +32,7 @@ if (carritoJSON) {
         p.textContent = `${item.titulo_ps} (${item.cantidad}) - $${item.precio}`;
         productosDiv.appendChild(p);
 
-        total += parseInt(item.precio);
+        total += parseFloat(item.precio);
     });
 
     if (totalConDescuento) {
@@ -99,7 +111,6 @@ $("form-pago").addEventListener("submit", function (e) {
         return;
     }
 
-    alert("Pago realizado con éxito. ¡Gracias por tu compra!");
     sessionStorage.clear();
 
     eliminarDelCarrito(userId);
@@ -113,7 +124,7 @@ async function eliminarDelCarrito(id) {
         const result = await response.json();
 
         if (response.ok) {
-            cargarCarrito(idUsuario());
+            cargarCarrito(userId);
         } else {
             alert(result.error);
         }
@@ -185,8 +196,6 @@ async function comprobante(userId, nombreCliente) {
             const errorData = await response.json();
             console.error(`Error al generar el comprobante: ${errorData.message}`);
         }
-
-        console.log("SUPUESTAMENTE COMPROBANTE!");
     }
     catch (error) {
         console.error("Error al generar el comprobante:", error);

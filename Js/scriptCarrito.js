@@ -55,8 +55,13 @@ async function cargarCarrito(usuarioId) {
             container.classList.add("carrito-item");
 
             const img = document.createElement("img");
-            img.setAttribute("src", `https://image.tmdb.org/t/p/w500${item.url_imagen}`);
-            img.setAttribute("alt", item.titulo_ps);
+            if (item.ps_id === 2004 || item.ps_id === 2005 || item.ps_id === 2006) {
+                img.setAttribute("src", `../Imagenes/Logo.png`);
+                img.setAttribute("alt", item.titulo_ps);
+            } else {
+                img.setAttribute("src", `https://image.tmdb.org/t/p/w500${item.url_imagen}`);
+                img.setAttribute("alt", item.titulo_ps);
+            }
 
             const divInfo = document.createElement("div");
             divInfo.classList.add("carrito-item-info");
@@ -157,24 +162,4 @@ function aplicarDescuento(total) {
     }
 
     return null;
-}
-
-async function idUsuario() {
-    const token = localStorage.getItem("auth_token");
-
-    if (token) {
-        try {
-            const decoded = jwtDecode(token);
-        
-            const userId = decoded.id;
-
-            return userId;
-        }
-        catch (error) {
-            console.error('Error al decodificar el token:', error);
-        }
-    }
-    else {
-        console.log('No hay token disponible');
-    }
 }

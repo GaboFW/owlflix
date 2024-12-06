@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
     const idSerie = params.get("id");
 
-    $("btnCarrito").addEventListener("submit", agregarAlCarrito(idSerie, idUsuario()));
+    $("btnCarrito").addEventListener("submit", agregarAlCarrito(idSerie, idUsuario(), 1000));
 
     if (idSerie) {
         try {
@@ -54,12 +54,12 @@ function idUsuario() {
     }
 }
 
-async function agregarAlCarrito(peliculaId, usuarioId) {
+async function agregarAlCarrito(peliculaId, usuarioId, precio) {
     try {
         const response = await fetch("http://localhost:3000/carrito", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ usuarioId, psId: peliculaId })
+            body: JSON.stringify({ usuarioId, psId: peliculaId, precio: precio })
         });
 
     } catch (error) {

@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
     const idPelicula = params.get("id");
 
-    $("btnCarrito").addEventListener("submit", agregarAlCarrito(idPelicula, idUsuario()));
+    $("btnCarrito").addEventListener("submit", agregarAlCarrito(idPelicula, idUsuario(), 1000));
 
     if (idPelicula) {
         try {
@@ -55,15 +55,13 @@ function idUsuario() {
     }
 }
 
-async function agregarAlCarrito(peliculaId, usuarioId) {
+async function agregarAlCarrito(peliculaId, usuarioId, precio) {
     try {
         const response = await fetch("http://localhost:3000/carrito", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ usuarioId, psId: peliculaId })
+            body: JSON.stringify({ usuarioId, psId: peliculaId, precio: precio })
         });
-
-        const result = await response.json();
 
     } catch (error) {
         console.error("Error al agregar al carrito:", error);

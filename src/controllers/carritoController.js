@@ -2,13 +2,14 @@ const carritoModel = require('../models/carritoModel');
 
 const insertarCarrito = async (req, res) => {
     try {
-        const { usuarioId, psId } = req.body;
+        const { usuarioId, psId, precio } = req.body;
 
-        const results = await carritoModel.insertarCarrito(usuarioId, psId);
+        const results = await carritoModel.insertarCarrito(usuarioId, psId, precio);
 
         res.status(201).json({ id: results.insertId });
     }
     catch (error) {
+        console.error(error);
         res.status(500).json({ error: "Error en el servidor" });
     }
 }

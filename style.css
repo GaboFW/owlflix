@@ -102,6 +102,12 @@ body {
     margin-bottom: 0px !important;
 }
 
+#divImagenes {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
 #divImagenes img {
     width: 32px;
     height: 32px;
@@ -187,11 +193,30 @@ body {
     color: var(--letraMain);
 }
 
+#headerMiembros {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 5%;
+    padding-right: 5%;
+    gap: 10px;
+}
+
+#headerMiembros h2 {
+    margin: 0;
+}
+
+#headerMiembros p {
+    text-align: justify;
+}
+
 .containerMiembros {
+    display: flex;
     gap: 20px;
 }
 
 .containerMiembros .card {
+    justify-content: space-between;
     background-color: var(--colorMain);
     border: 2px solid var(--verdeMain);
     border-radius: 10px;
@@ -229,6 +254,7 @@ body {
 
 .mainPeliculas h2,
 .mainSeries h2 {
+    padding-left: 65px;
     color: var(--letraMain);
 }
 

@@ -1,13 +1,13 @@
 const db = require('../config/database.js');
 
-const insertarCarrito = async (usuarioId, psId) => {
+const insertarCarrito = async (usuarioId, psId, precio) => {
     const query = `
-        INSERT INTO carrito (USUARIO_ID, PS_ID) VALUES (?, ?) 
+        INSERT INTO carrito (USUARIO_ID, PS_ID, PRECIO) VALUES (?, ?, ?) 
         ON DUPLICATE KEY UPDATE
         cantidad = cantidad + 1,
         precio = VALUES(precio) * (cantidad)
         `;
-    const values = [usuarioId, psId];
+    const values = [usuarioId, psId, precio];
 
     const [results] = await db.query(query, values);
 
