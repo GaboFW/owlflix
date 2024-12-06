@@ -41,7 +41,6 @@ if (carritoJSON) {
 const formPago = $("form-pago");
 formPago.addEventListener("submit", function (e) {
     e.preventDefault();
-    alert("Compra realizada con éxito. Gracias por tu compra.");
 
     sessionStorage.clear();
 
@@ -68,10 +67,17 @@ $("vencimiento").addEventListener("input", function (e) {
     }
 });
 
+$("cvv").addEventListener("input", function (e) {
+    const input = e.target;
+    let value = input.value.replace(/[^0-9]/g, "");
+    input.value = value.substring(0, 3);
+});
+
 $("form-pago").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    comprobante(userId); // ARREGLAR PDF DAÑADO
+    const nombreCliente = $("nombre").value;
+    comprobante(userId, nombreCliente);
 
     const tarjeta = $("tarjeta").value.replace(/\s+/g, "");
     const vencimiento = $("vencimiento").value;
@@ -88,7 +94,7 @@ $("form-pago").addEventListener("submit", function (e) {
         return;
     }
 
-    if (cvv.length < 3 || cvv.length > 4 || !/^\d+$/.test(cvv)) {
+    if (cvv.length !== 3 || !/^\d+$/.test(cvv)) {
         alert("CVV inválido.");
         return;
     }
@@ -130,18 +136,7 @@ function idUsuario() {
     }
 }
 
-function nombreUsuario(userId) {
-    fetch(`http://localhost:3000/usuario/${userId}`)
-    .then(response => response.json())
-    .then(data => {
-        return data[0];
-    })
-    .catch(error => {
-        console.error("No hay usuarios disponibles", error.message);
-    });
-}
-
-async function comprobante(userId) {
+async function comprobante(userId, nombreCliente) {
 
     if (!carrito || !userId) {
         alert("Error: No se pudo completar la compra.");
@@ -151,7 +146,7 @@ async function comprobante(userId) {
     const descuento = totalConDescuento ? parseFloat(totalConDescuento) - carrito.reduce((acc, item) => acc + parseFloat(item.precio), 0) : 0;
 
     const datosComprobante = {
-        cliente: nombreUsuario(userId),
+        cliente: nombreCliente,
         fecha: new Date().toISOString(),
         numeroComprobante: `C-${Date.now()}`,
         productos: carrito.map(item => ({
