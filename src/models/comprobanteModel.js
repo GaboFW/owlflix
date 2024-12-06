@@ -3,7 +3,7 @@ const PDFDocument = require('pdfkit');
 
 const generarPDF = (datos) => {
     const doc = new PDFDocument();
-    const filePath = `comprobante_Owlflix_${Date.now()}.pdf`;
+    const filePath = `comprobante_OwlFlix_${Date.now()}.pdf`;
 
     doc.pipe(fs.createWriteStream(filePath));
     doc.fontSize(20).text("Comprobante de Compra", { align: "center" });
@@ -19,10 +19,11 @@ const generarPDF = (datos) => {
     });
 
     doc.moveDown();
-    doc.fontSize(12).text(`Descuento: -$${datos.descuento}`);
+    doc.fontSize(12).text(`Descuento: $${datos.descuento}`);
     doc.fontSize(14).text(`Total: $${datos.total}`, { align: "right" });
     doc.moveDown();
     doc.fontSize(10).text("Gracias por su compra en Owlflix.", { align: "center" });
+    
     doc.end();
 
     return new Promise((resolve, reject) => {

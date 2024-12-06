@@ -8,12 +8,13 @@ const totalDiv = $("total-compra");
 const carritoJSON = sessionStorage.getItem("carrito");
 const totalConDescuento = sessionStorage.getItem("totalConDescuento");
 
+const carrito = JSON.parse(carritoJSON);
+
 let userId = idUsuario();
 
 let total = 0;
 
 if (carritoJSON) {
-    const carrito = JSON.parse(carritoJSON);
     carrito.forEach(item => {
         const p = document.createElement("p");
         p.textContent = `${item.titulo_ps} (${item.cantidad}) - $${item.precio}`;
@@ -70,6 +71,8 @@ $("vencimiento").addEventListener("input", function (e) {
 $("form-pago").addEventListener("submit", function (e) {
     e.preventDefault();
 
+    comprobante(userId); // ARREGLAR PDF DAÑADO
+
     const tarjeta = $("tarjeta").value.replace(/\s+/g, "");
     const vencimiento = $("vencimiento").value;
     const cvv = $("cvv").value;
@@ -123,6 +126,74 @@ function idUsuario() {
 
         return userId;
     } else {
-        console.log('No hay token disponible');
+        console.log("No hay token disponible");
+    }
+}
+
+function nombreUsuario(userId) {
+    fetch(`http://localhost:3000/usuario/${userId}`)
+    .then(response => response.json())
+    .then(data => {
+        return data[0];
+    })
+    .catch(error => {
+        console.error("No hay usuarios disponibles", error.message);
+    });
+}
+
+async function comprobante(userId) {
+
+    if (!carrito || !userId) {
+        alert("Error: No se pudo completar la compra.");
+        return;
+    }
+
+    const descuento = totalConDescuento ? parseFloat(totalConDescuento) - carrito.reduce((acc, item) => acc + parseFloat(item.precio), 0) : 0;
+
+    const datosComprobante = {
+        cliente: nombreUsuario(userId),
+        fecha: new Date().toISOString(),
+        numeroComprobante: `C-${Date.now()}`,
+        productos: carrito.map(item => ({
+            name: item.titulo_ps,
+            cantidad: item.cantidad,
+            price: item.precio
+        })),
+        descuento: descuento.toFixed(2),
+        total: totalConDescuento || carrito.reduce((acc, item) => acc + parseFloat(item.precio), 0)
+    };
+
+    const token = localStorage.getItem("auth_token");
+
+    try {
+        const response = await fetch("http://localhost:3000/comprobante", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(datosComprobante)
+        });
+
+        if (response.ok) {
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "comprobante.pdf";
+            a.click();
+            window.URL.revokeObjectURL(url);
+
+            sessionStorage.clear();
+            eliminarDelCarrito(userId);
+        } else {
+            const errorData = await response.json();
+            console.error(`Error al generar el comprobante: ${errorData.message}`);
+        }
+
+        console.log("SUPUESTAMENTE COMPROBANTE!");
+    }
+    catch (error) {
+        console.error("Error al generar el comprobante:", error);
     }
 }
