@@ -27,15 +27,15 @@ $("formRegistro").addEventListener("submit", async (e) => {
     const response = await fetch("http://localhost:3000/usuario/registro", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nombre, apellido, email, passwd })
+        body: JSON.stringify({ nombre: nombre, apellido: apellido, email: email, passwd: passwd })
     });
 
     const result = await response.json();
     if (response.ok) {
         Swal.fire({
             icon: "success",
-            title: "Inicio de Sesion exitoso",
-            text: "Se inicio sesion correctamente",
+            title: "Registro exitoso",
+            text: "Se registro correctamente",
             showConfirmButton: false,
             timer: 2000
         })
@@ -44,7 +44,7 @@ $("formRegistro").addEventListener("submit", async (e) => {
         });
         
     } else {
-        alert(result.error || "Error en el registro");
+        console.error(result.error || "Error en el registro");
     }
 });
 
