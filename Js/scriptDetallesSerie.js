@@ -6,8 +6,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
     const idSerie = params.get("id");
 
+    let userId = idUsuario();
+
     $("btnCarrito").addEventListener("click", function () {
-        agregarAlCarrito(idSerie, idUsuario(), 1000);
+        if (!userId) {
+            Swal.fire({
+                icon: "warning",
+                title: "Inicie Sesion",
+                text: "Debe iniciar sesion",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+
+        agregarAlCarrito(idSerie, userId, 1000);
     });
 
     if (idSerie) {
@@ -21,8 +33,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             $("posterSerie").setAttribute("alt", data.TITULO_PS);
             $("descripcionSerie").textContent = data.SINOPSIS;
             generos(idSerie);
-
-        } catch (error) {
+        }
+        catch (error) {
             console.error("Error al cargar los detalles de la película: ", error);
         }
     }
@@ -52,7 +64,7 @@ function idUsuario() {
         return id;
     }
     else {
-        console.error('Token no encontrado');
+        console.error("Token no encontrado");
     }
 }
 
@@ -64,7 +76,17 @@ async function agregarAlCarrito(peliculaId, usuarioId, precio) {
             body: JSON.stringify({ usuarioId, psId: peliculaId, precio: precio })
         });
 
-    } catch (error) {
+        if (response.ok) {
+            Swal.fire({
+                icon: "success",
+                title: "Agregado al carrito",
+                text: "La serie se ha añadido correctamente al carrito.",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    }
+    catch (error) {
         console.error("Error al agregar al carrito:", error);
     }
 }

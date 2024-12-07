@@ -6,8 +6,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
     const idPelicula = params.get("id");
 
+    let userId = idUsuario()
+
     $("btnCarrito").addEventListener("click", function () {
-        agregarAlCarrito(idPelicula, idUsuario(), 1000);
+        if (!userId) {
+            Swal.fire({
+                icon: "warning",
+                title: "Inicie Sesion",
+                text: "Debe iniciar sesion",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+
+        agregarAlCarrito(idPelicula, userId, 1000);
     });
 
     if (idPelicula) {
@@ -66,7 +78,17 @@ async function agregarAlCarrito(peliculaId, usuarioId, precio) {
             body: JSON.stringify({ usuarioId, psId: peliculaId, precio: precio })
         });
 
-    } catch (error) {
+        if (response.ok) {
+            Swal.fire({
+                icon: "success",
+                title: "Agregado al carrito",
+                text: "La pelicula se ha añadido correctamente al carrito.",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    }
+    catch (error) {
         console.error("Error al agregar al carrito:", error);
     }
 }

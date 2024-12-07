@@ -42,7 +42,6 @@ async function iniciarSesion() {
 
         if (token) {
             localStorage.setItem("auth_token", token);
-            // localStorage.setItem("userEmail", email);
 
             window.location.href = "../index.html";
         }

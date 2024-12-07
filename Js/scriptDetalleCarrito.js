@@ -115,7 +115,16 @@ $("form-pago").addEventListener("submit", function (e) {
 
     eliminarDelCarrito(userId);
 
-    window.location.href = "carrito.html"; 
+    Swal.fire({
+        icon: "success",
+        title: "Pago exitoso",
+        text: "Tu compra se realizó correctamente.",
+        showConfirmButton: false,
+        timer: 2000
+    })
+    .then(() => {
+        window.location.href = "carrito.html";
+    });
 });
 
 async function eliminarDelCarrito(id) {
@@ -126,7 +135,7 @@ async function eliminarDelCarrito(id) {
         if (response.ok) {
             cargarCarrito(userId);
         } else {
-            alert(result.error);
+            console.error(result.error);
         }
     } catch (error) {
         console.error("Error al eliminar del carrito:", error);
@@ -156,9 +165,11 @@ async function comprobante(userId, nombreCliente) {
 
     const descuento = totalConDescuento ? parseFloat(totalConDescuento) - carrito.reduce((acc, item) => acc + parseFloat(item.precio), 0) : 0;
 
+    let fecha = obtenerFechaFormato()
+
     const datosComprobante = {
         cliente: nombreCliente,
-        fecha: new Date().toISOString(),
+        fecha: fecha,
         numeroComprobante: `C-${Date.now()}`,
         productos: carrito.map(item => ({
             name: item.titulo_ps,
@@ -200,4 +211,13 @@ async function comprobante(userId, nombreCliente) {
     catch (error) {
         console.error("Error al generar el comprobante:", error);
     }
+}
+
+function obtenerFechaFormato() {
+    const fecha = new Date();
+    const anio = fecha.getFullYear();
+    const mes = String(fecha.getMonth() + 1).padStart(2, "0");
+    const dia = String(fecha.getDate()).padStart(2, "0");
+
+    return `${dia}/${mes}/${anio}`;
 }

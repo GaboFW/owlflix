@@ -32,8 +32,17 @@ $("formRegistro").addEventListener("submit", async (e) => {
 
     const result = await response.json();
     if (response.ok) {
-        alert("Registro exitoso");
-        window.location.href = "login.html";
+        Swal.fire({
+            icon: "success",
+            title: "Inicio de Sesion exitoso",
+            text: "Se inicio sesion correctamente",
+            showConfirmButton: false,
+            timer: 2000
+        })
+        .then(() => {
+            window.location.href = "login.html";
+        });
+        
     } else {
         alert(result.error || "Error en el registro");
     }

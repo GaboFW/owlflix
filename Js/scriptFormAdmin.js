@@ -32,6 +32,16 @@ $("formUpgrade").addEventListener("submit", async function (event) {
 
         if (response.ok) {
             sinopsis.value = "";
+
+            if (response.ok) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Sinopsis Modificada",
+                    text: "La sinopsis ha sido modificada correctamente.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
         } else {
             console.error("Error al actualizar", error.message);
         }
@@ -57,8 +67,10 @@ async function esAdmin() {
 
         if (id === 6 || id === 7) {
             $("divUpgrade").style.display = "block";
+            $("divfuncionAdmin").style.display = "block";
         } else {;
             $("divUpgrade").style.display = "none";
+            $("divfuncionAdmin").style.display = "none";
         }
     } catch (error) {
         console.error("Error al intentar verificar si el usuario es admin:", error.message);

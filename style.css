@@ -16,10 +16,14 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     font-family: "Open Sans";
     position: relative;
     background-color: var(--background);
+}
+
+main {
+    margin-bottom: 20px;
 }
 
 /* Header */
@@ -78,7 +82,7 @@ body {
 #homeFooter {
     background-color: var(--colorMain) !important;
     color: whitesmoke;
-    margin: 10px 0 0 0;
+    margin-top: auto;
 }
 
 #logoFooter {
@@ -612,6 +616,18 @@ body {
     cursor: pointer;
 }
 
+#sessionForm {
+    color: var(--letraMain);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#divfuncionAdmin {
+    color: var(--letraMain);
+    margin-left: 150px;
+}
+
 /* Carrito */
 .carrito-container {
     width: 80%;
@@ -810,7 +826,7 @@ body {
     border: 1px solid var(--verdeMain);
     margin-bottom: 15px;
     background-color: var(--colorMain);
-    color: var(--letraMain);
+    color: whitesmoke;
 }
 
 #divUpgrade button {

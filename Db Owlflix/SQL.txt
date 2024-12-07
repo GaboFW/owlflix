@@ -1,0 +1,48 @@
+Registro: -- usuario
+	ID INT NOT NULL AUTO_INCREMENT,
+	Nombre VARCHAR(50) NOT NULL,
+	Apellido VARCHAR(50) NOT NULL,
+	Email VARCHAR(50) UNIQUE NOT NULL,
+	Passwd VARCHAR(15) NOT NULL,
+	EsAdmin BOOLEAN NOT NULL,
+	PRIMARY KEY(ID)
+
+usuario con carrito con producto
+
+NO CONSULTA
+
+PRODUCTO  
+
+*******************************************
+DELIMITER $$
+
+CREATE TRIGGER admin_status BEFORE INSERT ON Usuarios
+FOR EACH ROW
+BEGIN
+    SET NEW.EsAdmin = CASE WHEN NEW.Email LIKE "%@admin.com" THEN TRUE ELSE FALSE END;
+END; $$
+
+DELIMITER ;
+*******************************************
+
+Carrito:
+	IDCarrito INT NOT NULL AUTO_INCREMENTAL,
+	NombrePS VARCHAR(100) NOT NULL,
+	Cantidad INT,
+	Precio INT,
+	ID_usuario, -> clave foranea
+	PRIMARY KEY(ID)
+
+
+interfaz, relacionar pedido
+tabla intermedia
+
+
+Contacto:
+	IDContacto INT NOT NULL AUTO_INCREMENT,
+	Nombre VARCHAR(50) NOT NULL,
+	Apellido VARCHAR(50) NOT NULL,
+	Email VARCHAR(50) NOT NULL,
+	Asunto VARCHAR(50) NOT NULL,
+	Consulta VARCHAR(255) NOT NULL,
+	PRIMARY KEY(ID)
