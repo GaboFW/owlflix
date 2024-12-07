@@ -6,7 +6,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
     const idSerie = params.get("id");
 
-    $("btnCarrito").addEventListener("submit", agregarAlCarrito(idSerie, idUsuario(), 1000));
+    $("btnCarrito").addEventListener("click", function () {
+        agregarAlCarrito(idSerie, idUsuario(), 1000);
+    });
 
     if (idSerie) {
         try {

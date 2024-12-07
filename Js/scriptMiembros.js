@@ -47,8 +47,6 @@ async function agregarAlCarrito(usuarioId, psId, precio) {
             body: JSON.stringify({ usuarioId, psId: psId, precio: precio })
         });
 
-        
-
     } catch (error) {
         console.error("Error al agregar al carrito:", error);
     }

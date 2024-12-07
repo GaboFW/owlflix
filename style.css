@@ -778,6 +778,58 @@ body {
     margin-top: 15px;
 }
 
+/* Form Admin */
+#divUpgrade {
+    background-color: var(--colorMain);
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--letraMain);
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#divUpgrade h3 {
+    color: whitesmoke;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#divUpgrade label {
+    font-weight: bold;
+    color: whitesmoke;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#divUpgrade select,
+#divUpgrade textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--verdeMain);
+    margin-bottom: 15px;
+    background-color: var(--colorMain);
+    color: var(--letraMain);
+}
+
+#divUpgrade button {
+    background-color: var(--verdeMain);
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#divUpgrade button:hover {
+    background-color: #149652;
+    transform: scale(0.98);
+}
+
 /* Demas */
 .mensajeSinResultados {
     text-align: center;

@@ -75,7 +75,6 @@
                 <div class="mb-3">
                     <label for="Email" class="form-label">Email:</label>
                     <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Email" required>
-                    <span id="emailError" class="error-message"></span>
                 </div>
                 <div class="mb-3 ojos">
                     <label for="PasswordLogin" class="form-label">Password:</label>
@@ -90,6 +89,25 @@
         <div id="sessionForm" style="display: none;">
             <p style="color: whitesmoke;">¡Bienvenido! Ya estás logueado.</p>
             <button id="logoutButton">Cerrar Sesión</button>
+        </div>
+
+        <div id="divUpgrade" style="display: none;">
+            <h3>Actualizar Sinopsis</h3>
+            <form id="formUpgrade">
+                <div>
+                    <label for="id">ID:</label>
+                </div>
+                <div>
+                    <select id="opciones"></select>
+                </div>
+
+                <div>
+                    <label for="sinopsis">Sinopsis:</label>
+                    <textarea name="sinopsis" id="sinopsis" rows="5" cols="30"></textarea> 
+                </div>
+
+                <button class="btn btn-primary">Cambiar Sinopsis</button>
+            </form>
         </div>
     </main>
 
@@ -138,7 +156,7 @@
     <script src="../Js/scriptContra.js"></script>
     <script src="../Js/scriptAdmin.js"></script>
     <script src="../Js/scriptCambiarModo.js"></script>
-
     <script src="../Js/scriptLogeo.js"></script>
+    <script src="../Js/scriptFormAdmin.js"></script>
 </body>
 </html>

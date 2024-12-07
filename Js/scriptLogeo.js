@@ -42,11 +42,12 @@ async function iniciarSesion() {
 
         if (token) {
             localStorage.setItem("auth_token", token);
+            // localStorage.setItem("userEmail", email);
 
             window.location.href = "../index.html";
         }
     } else {
-        alert(result.error || "Error en el inicio de sesión");
+        console.error(result.error || "Error en el inicio de sesión");
     }
 }
 

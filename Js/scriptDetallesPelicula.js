@@ -6,7 +6,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
     const idPelicula = params.get("id");
 
-    $("btnCarrito").addEventListener("submit", agregarAlCarrito(idPelicula, idUsuario(), 1000));
+    $("btnCarrito").addEventListener("click", function () {
+        agregarAlCarrito(idPelicula, idUsuario(), 1000);
+    });
 
     if (idPelicula) {
         try {
@@ -20,6 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             $("descripcionPelicula").textContent = data.SINOPSIS;
             $("fechaLanzamiento").textContent = `Fecha de lanzamiento: ${data.FECHA_LANZAMIENTO}`;
             generos(idPelicula);
+            $("idPelicula").textContent = idPelicula;
 
         } catch (error) {
             console.error("Error al cargar los detalles de la película: ", error);
