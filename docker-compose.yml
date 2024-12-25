@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  app:
+    image: gabofw/owlflix-backend:latest
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: owlflix
+    ports:
+      - "3307:3306"
+
