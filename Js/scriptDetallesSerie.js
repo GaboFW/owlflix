@@ -14,8 +14,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                 icon: "warning",
                 title: "Inicie Sesion",
                 text: "Debe iniciar sesion",
-                showConfirmButton: false,
-                timer: 1500
+                showCancelButton: true,
+                confirmButtonText: "Login",
+                cancelButtonText: "Continuar Viendo",
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "./login.html";
+                }
             });
         }
 

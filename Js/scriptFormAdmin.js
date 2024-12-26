@@ -42,7 +42,8 @@ $("formUpgrade").addEventListener("submit", async function (event) {
                     timer: 1500
                 });
             }
-        } else {
+        }
+        else {
             console.error("Error al actualizar", error.message);
         }
     }

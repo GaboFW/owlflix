@@ -14,9 +14,31 @@ document.addEventListener("DOMContentLoaded", async () => {
                 icon: "warning",
                 title: "Inicie Sesion",
                 text: "Debe iniciar sesion",
-                showConfirmButton: false,
-                timer: 1500
+                showCancelButton: true,
+                confirmButtonText: "Login",
+                cancelButtonText: "Continuar Viendo",
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "./login.html";
+                }
             });
+
+            /*
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: "¡No podrás revertir esta acción!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Google.com',
+                    cancelButtonText: 'Seguir aquí',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = 'https://www.google.com';
+                    }
+                });
+            */
         }
 
         agregarAlCarrito(idPelicula, userId, 1000);

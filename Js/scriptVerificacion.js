@@ -7,17 +7,49 @@ const btnRegistro = $("registroBtn");
 /**
  * Verifica que la confirmacion de la contraseña sea igual a la contraseña
  */
-function verificarDatos() {
+function verificarContras() {
     const contraRegistro = $("Password");
     const confirmarContraRegistro = $("ConfirmarContraseña");
 
     if (contraRegistro.value !== confirmarContraRegistro.value) {
-        alert("Error en contraseñas");
+        Swal.fire({
+            icon: "warning",
+            title: "Error en contraseñas",
+            text: "Las contraseñas no coinciden",
+            showConfirmButton: false,
+            timer: 1500
+        });
+
+        return false;
     }
+
+    return true;
+}
+
+function verificarCaracteres() {
+    const contraRegistro = $("Password");
+
+    if (contraRegistro.value.length < 8) {
+        Swal.fire({
+            icon: "warning",
+            title: "Error en contraseña",
+            text: "La contraseña debe tener al menos 8 caracteres",
+            showConfirmButton: false,
+            timer: 2000
+        });
+
+        return false;
+    }
+
+    return true;
 }
 
 $("formRegistro").addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    if (!verificarContras() || !verificarCaracteres()) {
+        return;
+    }
 
     const nombre = $("Nombre").value;
     const apellido = $("Apellido").value;
@@ -31,6 +63,20 @@ $("formRegistro").addEventListener("submit", async (e) => {
     });
 
     const result = await response.json();
+    console.log(result);
+
+    if (result.message === "El mail ya existen") {
+        Swal.fire({
+            icon: "warning",
+            title: "Error en email",
+            text: "El email ya esta registrado",
+            showConfirmButton: false,
+            timer: 2000
+        });
+
+        return;
+    }
+
     if (response.ok) {
         Swal.fire({
             icon: "success",
@@ -42,10 +88,13 @@ $("formRegistro").addEventListener("submit", async (e) => {
         .then(() => {
             window.location.href = "login.html";
         });
-        
-    } else {
-        console.error(result.error || "Error en el registro");
+    }
+    else {
+        console.error(result.message);
     }
 });
 
-btnRegistro.addEventListener("click", verificarDatos);
+btnRegistro.addEventListener("click", () => {
+    verificarContras();
+    verificarCaracteres();
+});

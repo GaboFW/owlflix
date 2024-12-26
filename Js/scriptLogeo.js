@@ -37,6 +37,19 @@ async function iniciarSesion() {
     });
 
     const result = await response.json();
+
+    if (result.message === "Credenciales no válidas") {
+        Swal.fire({
+            icon: "warning",
+            title: "Error en email o contraseña",
+            text: "El email o contraseña son incorrectos",
+            showConfirmButton: false,
+            timer: 2000
+        });
+
+        return;
+    }
+
     if (response.ok) {
         const token = response.headers.get("Authorization")?.split(" ")[1];
 
@@ -45,8 +58,9 @@ async function iniciarSesion() {
 
             window.location.href = "../index.html";
         }
-    } else {
-        console.error(result.error || "Error en el inicio de sesión");
+    }
+    else {
+        console.error(result.message);
     }
 }
 

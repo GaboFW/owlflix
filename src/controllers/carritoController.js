@@ -9,7 +9,6 @@ const insertarCarrito = async (req, res) => {
         res.status(201).json({ id: results.insertId });
     }
     catch (error) {
-        console.error(error);
         res.status(500).json({ error: "Error en el servidor" });
     }
 }
