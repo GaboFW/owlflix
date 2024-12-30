@@ -23,22 +23,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     window.location.href = "./login.html";
                 }
             });
-
-            /*
-                Swal.fire({
-                    title: '¿Estás seguro?',
-                    text: "¡No podrás revertir esta acción!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Google.com',
-                    cancelButtonText: 'Seguir aquí',
-                    reverseButtons: true
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = 'https://www.google.com';
-                    }
-                });
-            */
         }
 
         agregarAlCarrito(idPelicula, userId, 1000);

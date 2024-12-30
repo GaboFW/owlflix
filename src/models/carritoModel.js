@@ -2,7 +2,7 @@ const db = require('../config/database.js');
 
 const insertarCarrito = async (usuarioId, psId, precio) => {
     const query = `
-        INSERT INTO carrito (USUARIO_ID, PS_ID, PRECIO) VALUES (?, ?, ?) 
+        INSERT INTO CARRITO (USUARIO_ID, PS_ID, PRECIO) VALUES (?, ?, ?) 
         ON DUPLICATE KEY UPDATE
         cantidad = cantidad + 1,
         precio = VALUES(precio) * (cantidad)
@@ -16,10 +16,10 @@ const insertarCarrito = async (usuarioId, psId, precio) => {
 
 const getCarritoId = async (usuarioId) => {
     const query = `
-        SELECT C.id, C.ps_id, P.titulo_ps, P.url_imagen, C.precio, C.cantidad
-        FROM carrito C
-        JOIN peliculas_series P ON C.ps_id = P.id_ps
-        WHERE C.usuario_id = ?
+        SELECT C.ID, C.PS_ID, P.TITULO_PS, P.URL_IMAGEN, C.PRECIO, C.CANTIDAD
+        FROM CARRITO C
+        JOIN PELICULAS_SERIES P ON C.PS_ID = P.ID_PS
+        WHERE C.USUARIO_ID = ?
         `;
     const values = [usuarioId];
 
@@ -29,7 +29,7 @@ const getCarritoId = async (usuarioId) => {
 }
 
 const deleteCarritoId = async (id) => {
-    const query = `DELETE FROM carrito WHERE usuario_id = ?`;
+    const query = `DELETE FROM CARRITO WHERE USUARIO_ID = ?`;
     const values = [id];
 
     const [results] = await db.query(query, values);
@@ -38,7 +38,7 @@ const deleteCarritoId = async (id) => {
 }
 
 const deleteIdItem = async (userId, idItem) => {
-    const query = `DELETE FROM carrito WHERE usuario_id = ? AND ps_id = ?`;
+    const query = `DELETE FROM CARRITO WHERE USUARIO_ID = ? AND PS_ID = ?`;
     const values = [userId, idItem];
     
     const [results] = await db.query(query, values);
@@ -47,7 +47,7 @@ const deleteIdItem = async (userId, idItem) => {
 }
 
 const putCantidad = async (cantidad, userId, idItem) => {
-    const query = `UPDATE carrito SET cantidad = ?, precio = cantidad * 1000 WHERE usuario_id = ? AND ps_id = ?`;
+    const query = `UPDATE CARRITO SET CANTIDAD = ?, PRECIO = CANTIDAD * 1000 WHERE USUARIO_ID = ? AND PS_ID = ?`;
     const values = [cantidad, userId, idItem];
 
     const [results] = await db.query(query, values);

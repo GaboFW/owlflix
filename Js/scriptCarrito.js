@@ -55,17 +55,17 @@ async function cargarCarrito(usuarioId) {
             container.classList.add("carrito-item");
 
             const img = document.createElement("img");
-            if (item.ps_id === 2004 || item.ps_id === 2005 || item.ps_id === 2006) {
+            if (item.PS_ID === 2004 || item.PS_ID === 2005 || item.PS_ID === 2006) {
                 img.setAttribute("src", `../Imagenes/Logo.png`);
-                img.setAttribute("alt", item.titulo_ps);
+                img.setAttribute("alt", item.TITULO_PS);
             } else {
-                img.setAttribute("src", `https://image.tmdb.org/t/p/w500${item.url_imagen}`);
-                img.setAttribute("alt", item.titulo_ps);
+                img.setAttribute("src", `https://image.tmdb.org/t/p/w500${item.URL_IMAGEN}`);
+                img.setAttribute("alt", item.TITULO_PS);
             }
 
             const divInfo = document.createElement("div");
             divInfo.classList.add("carrito-item-info");
-            divInfo.textContent = item.titulo_ps;
+            divInfo.textContent = item.TITULO_PS;
 
             const divAccion = document.createElement("div");
             divAccion.classList.add("carrito-item-actions");
@@ -73,19 +73,19 @@ async function cargarCarrito(usuarioId) {
             const aEliminar = document.createElement("a");
             aEliminar.textContent = "Eliminar";
             aEliminar.setAttribute("href", "#");
-            aEliminar.addEventListener("click", () => eliminarItem(usuarioId, item.ps_id, item.cantidad));
+            aEliminar.addEventListener("click", () => eliminarItem(usuarioId, item.PS_ID, item.CANTIDAD));
 
             const cantidad = document.createElement("span");
-            cantidad.textContent = `${item.cantidad}`;
+            cantidad.textContent = `${item.CANTIDAD}`;
 
             divAccion.appendChild(aEliminar);
             divAccion.appendChild(cantidad);
 
             const divPrecio = document.createElement("div");
             divPrecio.classList.add("carrito-item-price");
-            divPrecio.textContent = `$${item.precio}`;
+            divPrecio.textContent = `$${item.PRECIO}`;
 
-            total += parseInt(item.precio);
+            total += parseInt(item.PRECIO);
 
             container.appendChild(img);
             container.appendChild(divInfo);

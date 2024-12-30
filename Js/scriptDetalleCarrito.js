@@ -29,7 +29,7 @@ if (miembrosNombre && miembrosPrecio) {
 if (carritoJSON) {
     carrito.forEach(item => {
         const p = document.createElement("p");
-        p.textContent = `${item.titulo_ps} (${item.cantidad}) - $${item.precio}`;
+        p.textContent = `${item.TITULO_PS} (${item.CANTIDAD}) - $${item.PRECIO}`;
         productosDiv.appendChild(p);
 
         total += parseFloat(item.precio);

@@ -64,9 +64,9 @@ async function esAdmin() {
 
         const result = await response.json();
 
-        const id = result.user.id
+        const id = result.user.id;
 
-        if (id === 6 || id === 7) {
+        if (id === 1 || id === 2) {
             $("divUpgrade").style.display = "block";
             $("divfuncionAdmin").style.display = "block";
         } else {;

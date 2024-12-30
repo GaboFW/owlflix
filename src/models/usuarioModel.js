@@ -1,7 +1,7 @@
 const db = require('../config/database.js');
 
 const insertarUsuario = async (nombre, apellido, email, passwd) => {
-    const query = `INSERT INTO usuario (NOMBRE, APELLIDO, EMAIL, PASSWD) VALUES (?, ?, ?, ?)`;
+    const query = `INSERT INTO USUARIO (NOMBRE, APELLIDO, EMAIL, PASSWD) VALUES (?, ?, ?, ?)`;
     const values = [nombre, apellido, email, passwd];
     
     const [results] = await db.query(query, values);
@@ -10,7 +10,7 @@ const insertarUsuario = async (nombre, apellido, email, passwd) => {
 }
 
 const checkUsuario = async (email) => {
-    const query = `SELECT * FROM usuario WHERE EMAIL = ?`;
+    const query = `SELECT * FROM USUARIO WHERE EMAIL = ?`;
     const values = [email];
 
     const [results] = await db.query(query, values);
@@ -19,7 +19,7 @@ const checkUsuario = async (email) => {
 }
 
 const getNombreUser = async (id) => {
-    const query = `SELECT nombre FROM usuario WHERE ID = ?`;
+    const query = `SELECT NOMBRE FROM USUARIO WHERE ID = ?`;
     const values = [id];
 
     const [results] = await db.query(query, values);

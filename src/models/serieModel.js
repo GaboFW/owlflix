@@ -2,7 +2,7 @@ const db = require('../config/database.js');
 
 const series = async (page, limit) => {
     const offset = (page - 1) * limit;
-    const query = `SELECT * FROM peliculas_series WHERE CATEGORIA = ? LIMIT ? OFFSET ?`;
+    const query = `SELECT * FROM PELICULAS_SERIES WHERE CATEGORIA = ? LIMIT ? OFFSET ?`;
     const values = ['SERIE', limit, offset];
 
     const [results] = await db.query(query, values);
@@ -14,7 +14,7 @@ const seriesId = async (id) => {
     const query = `
         SELECT ID_PS, TITULO_PS, URL_IMAGEN, CATEGORIA, SINOPSIS, 
         DATE_FORMAT(FECHA_LANZAMIENTO, '%Y-%m-%d') AS FECHA_LANZAMIENTO
-        FROM peliculas_series
+        FROM PELICULAS_SERIES
         WHERE CATEGORIA = 'SERIE' AND ID_PS = ?
         `;
 
