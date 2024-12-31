@@ -2,6 +2,8 @@ function $(id) {
     return document.getElementById(id);
 }
 
+const BACKEND_URL = "owlflix-dp57.vercel.app";
+
 const btnRegistro = $("registroBtn");
 
 /**
@@ -56,7 +58,7 @@ $("formRegistro").addEventListener("submit", async (e) => {
     const email = $("Email").value;
     const passwd = $("Password").value;
 
-    const response = await fetch("http://localhost:3000/usuario/registro", {
+    const response = await fetch(`${BACKEND_URL}/usuario/registro`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nombre: nombre, apellido: apellido, email: email, passwd: passwd })

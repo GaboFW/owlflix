@@ -2,6 +2,8 @@ function $(id) {
     return document.getElementById(id);
 }
 
+const BACKEND_URL = "owlflix-dp57.vercel.app";
+
 const urlParams = new URLSearchParams(window.location.search);
 let pagina = parseInt(urlParams.get("page")) || 1;
 
@@ -69,7 +71,7 @@ async function cargarPeliculas() {
     }
 
     try {
-        const respuesta = await fetch(`http://localhost:3000/peliculas?page=${pagina}`);
+        const respuesta = await fetch(`${BACKEND_URL}/peliculas?page=${pagina}`);
         const data = await respuesta.json();
 
         console.log(data);
@@ -97,7 +99,7 @@ async function cargarSeries() {
     }
 
     try {
-        const respuesta = await fetch(`http://localhost:3000/series?page=${pagina}`);
+        const respuesta = await fetch(`${BACKEND_URL}/series?page=${pagina}`);
         const data = await respuesta.json();
 
         for (const serie of data) {
