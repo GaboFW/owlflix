@@ -11,4 +11,8 @@ const db = mysql.createPool({
     connectionLimit: 10
 });
 
+if (db) {
+    console.log('Conexión exitosa a la base de datos');
+}
+
 module.exports = db;
