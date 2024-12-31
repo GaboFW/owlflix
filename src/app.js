@@ -34,7 +34,9 @@ app.use('/carrito', carritoRouter);
 app.use('/comprobante', comprobanteRouter);
 app.use('/peliculas-series', peliSeriesRouter);
 
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+module.exports = app;
+
+// const PORT = 4000;
+// app.listen(PORT, () => {
+//     console.log(`Servidor corriendo en http://localhost:${PORT}`);
+// });
