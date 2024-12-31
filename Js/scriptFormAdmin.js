@@ -24,7 +24,7 @@ $("formUpgrade").addEventListener("submit", async function (event) {
     const sinopsis = $("sinopsis");
 
     try {
-        const response = await fetch(`${BACKEND_URL}/peliculas-series/${id}/sinopsis`, {
+        const response = await fetch(`http://localhost:3000/peliculas-series/${id}/sinopsis`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -57,7 +57,7 @@ $("formUpgrade").addEventListener("submit", async function (event) {
 async function esAdmin() {
     try {
         const token = localStorage.getItem("auth_token");
-        const response = await fetch(`${BACKEND_URL}/usuario/session`, {
+        const response = await fetch(`http://localhost:3000/usuario/session`, {
             headers: {
                 Authorization: `Bearer ${token}`
             },

@@ -22,7 +22,7 @@ function fetchResults(query) {
         return;
     }
 
-    const seriePelicula = `${BACKEND_URL}/peliculas-series/${query}`;
+    const seriePelicula = `http://localhost:3000/peliculas-series/${query}`;
 
     fetch(seriePelicula)
     .then(response => response.json())

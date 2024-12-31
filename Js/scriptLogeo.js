@@ -15,7 +15,7 @@ $("formLogin").addEventListener("submit", async (e) => {
 });
 
 $("logoutButton").addEventListener("click", async () => {
-    await fetch(`${BACKEND_URL}/usuario/logout`, { 
+    await fetch(`http://localhost:3000/usuario/logout`, { 
         method: "POST",
         credentials: "include"
     });
@@ -29,7 +29,7 @@ async function iniciarSesion() {
     const email = $("Email").value;
     const passwd = $("PasswordLogin").value;
 
-    const response = await fetch(`${BACKEND_URL}/usuario/login`, {
+    const response = await fetch(`http://localhost:3000/usuario/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -69,7 +69,7 @@ async function iniciarSesion() {
 async function validarSesion() {
     try {
         const token = localStorage.getItem("auth_token");
-        const response = await fetch(`${BACKEND_URL}/usuario/session`, {
+        const response = await fetch(`http://localhost:3000/usuario/session`, {
             headers: {
                 Authorization: `Bearer ${token}`
             },

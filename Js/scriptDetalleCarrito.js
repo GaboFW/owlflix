@@ -131,7 +131,7 @@ $("form-pago").addEventListener("submit", function (e) {
 
 async function eliminarDelCarrito(id) {
     try {
-        const response = await fetch(`${BACKEND_URL}/carrito/${id}`, { method: "DELETE" });
+        const response = await fetch(`http://localhost:3000/carrito/${id}`, { method: "DELETE" });
         const result = await response.json();
 
         if (response.ok) {
@@ -185,7 +185,7 @@ async function comprobante(userId, nombreCliente) {
     const token = localStorage.getItem("auth_token");
 
     try {
-        const response = await fetch(`${BACKEND_URL}/comprobante`, {
+        const response = await fetch(`http://localhost:3000/comprobante`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

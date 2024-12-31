@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function cargarCarrito(usuarioId) {
     try {
-        const response = await fetch(`${BACKEND_URL}/carrito/${usuarioId}`);
+        const response = await fetch(`http://localhost:3000/carrito/${usuarioId}`);
         const carrito = await response.json();
 
         sessionStorage.setItem("carrito", JSON.stringify(carrito));
@@ -108,7 +108,7 @@ async function cargarCarrito(usuarioId) {
 async function eliminarItem(userId, idItem, cantidadActual) {
     try {
         if (cantidadActual === 1){
-            const response = await fetch(`${BACKEND_URL}/carrito/${userId}/${idItem}`, {
+            const response = await fetch(`http://localhost:3000/carrito/${userId}/${idItem}`, {
                 method: "DELETE"
             });
     
@@ -120,7 +120,7 @@ async function eliminarItem(userId, idItem, cantidadActual) {
                 console.error(result.error);
             }
         } else {
-            const response = await fetch(`${BACKEND_URL}/carrito/${userId}/${idItem}`, {
+            const response = await fetch(`http://localhost:3000/carrito/${userId}/${idItem}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ cantidad: cantidadActual - 1 })
