@@ -72,8 +72,10 @@ async function cargarPeliculas() {
         const respuesta = await fetch(`http://localhost:3000/peliculas?page=${pagina}`);
         const data = await respuesta.json();
 
+        console.log(data);
+
         for (const pelicula of data) {
-            const poster = crearCarta(pelicula.TITULO_PS, `https://image.tmdb.org/t/p/w500${pelicula.URL_IMAGEN}`, pelicula.ID_PS, "Peliculas");
+            const poster = crearCarta(pelicula.titulo_ps, `https://image.tmdb.org/t/p/w500${pelicula.url_imagen}`, pelicula.id_ps, "Peliculas");
             container.appendChild(poster);
         }
     } catch (error) {
