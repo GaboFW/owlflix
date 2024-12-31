@@ -35,3 +35,8 @@ app.use('/comprobante', comprobanteRouter);
 app.use('/peliculas-series', peliSeriesRouter);
 
 module.exports = app;
+
+const port = 3000;
+app.listen(port, () => {
+    console.log(`Server corriendo en http://localhost:${port}`);
+});
