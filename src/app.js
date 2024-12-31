@@ -35,8 +35,3 @@ app.use('/comprobante', comprobanteRouter);
 app.use('/peliculas-series', peliSeriesRouter);
 
 module.exports = app;
-
-app.use((err, req, res, next) => {
-    console.error(err.stack); // Esto enviará los errores a los logs
-    res.status(500).send('Something broke!');
-});
