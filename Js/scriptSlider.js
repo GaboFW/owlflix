@@ -1,7 +1,3 @@
-function $(id) {
-    return document.getElementById(id);
-}
-
 const BACKEND_URL = "https://backend-owlflix.vercel.app";
 
 const swiper = new Swiper('.swiper', {
@@ -68,7 +64,7 @@ function crearCarta(titulo, imgUrl, id, categoria) {
  * Llamado a la Api para traer las peliculas
  */
 async function cargarPeliculas() {
-    const container = $("sliderPelis");
+    const container = document.getElementById("sliderPelis");
 
     try {
         // const respuesta = await fetch(`http://localhost:3000/peliculas?page=1`);
@@ -91,7 +87,7 @@ async function cargarPeliculas() {
  * Llamado a la Api para traer las series
  */
 async function cargarSeries() {
-    const container = $("sliderSeries");
+    const container = document.getElementById("sliderSeries");
 
     try {
         // const respuesta = await fetch(`http://localhost:3000/series?page=1`);
