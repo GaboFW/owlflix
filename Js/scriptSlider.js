@@ -1,4 +1,4 @@
-const BACKEND_URL = "https://backend-owlflix.vercel.app";
+const URL_BACKEND = "https://backend-owlflix.vercel.app";
 
 const swiper = new Swiper('.swiper', {
     autoplay: {
@@ -68,7 +68,7 @@ async function cargarPeliculas() {
 
     try {
         // const respuesta = await fetch(`http://localhost:3000/peliculas?page=1`);
-        const respuesta = await fetch(`${BACKEND_URL}/peliculas?page=1`);
+        const respuesta = await fetch(`${URL_BACKEND}/peliculas?page=1`);
         const data = await respuesta.json();
 
         const ochoPeliculas = data.slice(0, 8);
@@ -91,7 +91,7 @@ async function cargarSeries() {
 
     try {
         // const respuesta = await fetch(`http://localhost:3000/series?page=1`);
-        const respuesta = await fetch(`${BACKEND_URL}/series?page=1`);
+        const respuesta = await fetch(`${URL_BACKEND}/series?page=1`);
         const data = await respuesta.json();
 
         const ochoSeries = data.slice(0, 8);

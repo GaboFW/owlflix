@@ -1,11 +1,7 @@
-function $(id) {
-    return document.getElementById(id);
-}
-
-const BACKEND_URL = "https://backend-owlflix.vercel.app";
+const URL_BACKEND = "https://backend-owlflix.vercel.app";
 
 document.addEventListener("DOMContentLoaded", function () {
-    const select = $("opciones");
+    const select = document.getElementById("opciones");
     for (let i = 1; i <= 2000; i++) {
         const option = document.createElement("option");
         option.value = i;
@@ -17,15 +13,15 @@ document.addEventListener("DOMContentLoaded", function () {
     esAdmin();
 });
 
-$("formUpgrade").addEventListener("submit", async function (event) {
+document.getElementById("formUpgrade").addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const id = $("opciones").value;
-    const sinopsis = $("sinopsis");
+    const id = document.getElementById("opciones").value;
+    const sinopsis = document.getElementById("sinopsis");
 
     try {
         // const response = await fetch(`http://localhost:3000/peliculas-series/${id}/sinopsis`, {
-        const response = await fetch(`${BACKEND_URL}/peliculas-series/${id}/sinopsis`, {
+        const response = await fetch(`${URL_BACKEND}/peliculas-series/${id}/sinopsis`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -59,7 +55,7 @@ async function esAdmin() {
     try {
         const token = localStorage.getItem("auth_token");
         // const response = await fetch(`http://localhost:3000/usuario/session`, {
-        const response = await fetch(`${BACKEND_URL}/usuario/session`, {
+        const response = await fetch(`${URL_BACKEND}/usuario/session`, {
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -71,11 +67,11 @@ async function esAdmin() {
         const id = result.user.id;
 
         if (id === 1 || id === 2) {
-            $("divUpgrade").style.display = "block";
-            $("divfuncionAdmin").style.display = "block";
-        } else {;
-            $("divUpgrade").style.display = "none";
-            $("divfuncionAdmin").style.display = "none";
+            document.getElementById("divUpgrade").style.display = "block";
+            document.getElementById("divfuncionAdmin").style.display = "block";
+        } else {
+            document.getElementById("divUpgrade").style.display = "none";
+            document.getElementById("divfuncionAdmin").style.display = "none";
         }
     } catch (error) {
         console.error("Error al intentar verificar si el usuario es admin:", error.message);

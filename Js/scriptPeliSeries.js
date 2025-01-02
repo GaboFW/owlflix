@@ -75,8 +75,6 @@ async function cargarPeliculas() {
         const respuesta = await fetch(`${BACKEND_URL}/peliculas?page=${pagina}`);
         const data = await respuesta.json();
 
-        console.log(data);
-
         for (const pelicula of data) {
             const poster = crearCarta(pelicula.TITULO_PS, `https://image.tmdb.org/t/p/w500${pelicula.URL_IMAGEN}`, pelicula.ID_PS, "Peliculas");
             container.appendChild(poster);
