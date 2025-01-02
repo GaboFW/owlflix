@@ -2,7 +2,7 @@ function $(id) {
     return document.getElementById(id);
 }
 
-const BACKEND_URL = "owlflix-dp57.vercel.app";
+const BACKEND_URL = "https://backend-owlflix.vercel.app";
 
 document.addEventListener("DOMContentLoaded", function () {
     const select = $("opciones");
@@ -24,7 +24,8 @@ $("formUpgrade").addEventListener("submit", async function (event) {
     const sinopsis = $("sinopsis");
 
     try {
-        const response = await fetch(`http://localhost:3000/peliculas-series/${id}/sinopsis`, {
+        // const response = await fetch(`http://localhost:3000/peliculas-series/${id}/sinopsis`, {
+        const response = await fetch(`${BACKEND_URL}/peliculas-series/${id}/sinopsis`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -57,7 +58,8 @@ $("formUpgrade").addEventListener("submit", async function (event) {
 async function esAdmin() {
     try {
         const token = localStorage.getItem("auth_token");
-        const response = await fetch(`http://localhost:3000/usuario/session`, {
+        // const response = await fetch(`http://localhost:3000/usuario/session`, {
+        const response = await fetch(`${BACKEND_URL}/usuario/session`, {
             headers: {
                 Authorization: `Bearer ${token}`
             },

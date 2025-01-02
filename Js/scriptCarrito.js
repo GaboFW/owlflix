@@ -4,7 +4,7 @@ function $(id) {
 
 let descuentoAplicado = false;
 
-const BACKEND_URL = "owlflix-dp57.vercel.app";
+const BACKEND_URL = "https://backend-owlflix.vercel.app";
 
 document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("auth_token");
@@ -42,7 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function cargarCarrito(usuarioId) {
     try {
-        const response = await fetch(`http://localhost:3000/carrito/${usuarioId}`);
+        // const response = await fetch(`http://localhost:3000/carrito/${usuarioId}`)
+        const response = await fetch(`${BACKEND_URL}/carrito/${usuarioId}`);
         const carrito = await response.json();
 
         sessionStorage.setItem("carrito", JSON.stringify(carrito));
@@ -108,7 +109,8 @@ async function cargarCarrito(usuarioId) {
 async function eliminarItem(userId, idItem, cantidadActual) {
     try {
         if (cantidadActual === 1){
-            const response = await fetch(`http://localhost:3000/carrito/${userId}/${idItem}`, {
+            // const response = await fetch(`http://localhost:3000/carrito/${userId}/${idItem}`, {
+            const response = await fetch(`${BACKEND_URL}/carrito/${userId}/${idItem}`, {
                 method: "DELETE"
             });
     
@@ -120,7 +122,8 @@ async function eliminarItem(userId, idItem, cantidadActual) {
                 console.error(result.error);
             }
         } else {
-            const response = await fetch(`http://localhost:3000/carrito/${userId}/${idItem}`, {
+            // const response = await fetch(`http://localhost:3000/carrito/${userId}/${idItem}`, {
+            const response = await fetch(`${BACKEND_URL}/carrito/${userId}/${idItem}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ cantidad: cantidadActual - 1 })

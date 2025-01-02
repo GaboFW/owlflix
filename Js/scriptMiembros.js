@@ -2,7 +2,7 @@ function $(id) {
     return document.getElementById(id);
 }
 
-const BACKEND_URL = "owlflix-dp57.vercel.app";
+const BACKEND_URL = "https://backend-owlflix.vercel.app";
 
 const botonesMiembro = document.querySelectorAll(".miembrosBtn");
 
@@ -49,7 +49,8 @@ function idUsuario() {
 
 async function agregarAlCarrito(usuarioId, psId, precio) {
     try {
-        const response = await fetch(`http://localhost:3000/carrito`, {
+        // const response = await fetch(`http://localhost:3000/carrito`, {
+        const response = await fetch(`${BACKEND_URL}/carrito`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ usuarioId, psId: psId, precio: precio })

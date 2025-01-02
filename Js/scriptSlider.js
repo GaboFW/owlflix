@@ -2,7 +2,7 @@ function $(id) {
     return document.getElementById(id);
 }
 
-const BACKEND_URL = "owlflix-dp57.vercel.app";
+const BACKEND_URL = "https://backend-owlflix.vercel.app";
 
 const swiper = new Swiper('.swiper', {
     autoplay: {
@@ -71,7 +71,8 @@ async function cargarPeliculas() {
     const container = $("sliderPelis");
 
     try {
-        const respuesta = await fetch(`http://localhost:3000/peliculas?page=1`);
+        // const respuesta = await fetch(`http://localhost:3000/peliculas?page=1`);
+        const respuesta = await fetch(`${BACKEND_URL}/peliculas?page=1`);
         const data = await respuesta.json();
 
         const ochoPeliculas = data.slice(0, 8);
@@ -93,7 +94,8 @@ async function cargarSeries() {
     const container = $("sliderSeries");
 
     try {
-        const respuesta = await fetch(`http://localhost:3000/series?page=1`);
+        // const respuesta = await fetch(`http://localhost:3000/series?page=1`);
+        const respuesta = await fetch(`${BACKEND_URL}/series?page=1`);
         const data = await respuesta.json();
 
         const ochoSeries = data.slice(0, 8);

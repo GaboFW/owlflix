@@ -2,7 +2,7 @@ function $(id) {
     return document.getElementById(id);
 }
 
-const BACKEND_URL = "owlflix-dp57.vercel.app";
+const BACKEND_URL = "https://backend-owlflix.vercel.app";
 
 document.addEventListener("DOMContentLoaded", function() {
     const params = new URLSearchParams(window.location.search);
@@ -22,7 +22,8 @@ function fetchResults(query) {
         return;
     }
 
-    const seriePelicula = `http://localhost:3000/peliculas-series/${query}`;
+    // const seriePelicula = `http://localhost:3000/peliculas-series/${query}`;
+    const seriePelicula = `${BACKEND_URL}/peliculas-series/${query}`;
 
     fetch(seriePelicula)
     .then(response => response.json())
