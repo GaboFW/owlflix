@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (idPelicula) {
         try {
-            const respuesta = await fetch(`http://localhost:3000/peliculas/${idPelicula}`);
-            // const respuesta = await fetch(`${BACKEND_URL}/peliculas/${idPelicula}`);
+            // const respuesta = await fetch(`http://localhost:3000/peliculas/${idPelicula}`);
+            const respuesta = await fetch(`${BACKEND_URL}/peliculas/${idPelicula}`);
             const datos = await respuesta.json();
             const data = datos[0];
 
@@ -52,8 +52,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 function generos(id) {
-    fetch(`http://localhost:3000/genero/${id}`)
-    // fetch(`${BACKEND_URL}/genero/${id}`)
+    // fetch(`http://localhost:3000/genero/${id}`)
+    fetch(`${BACKEND_URL}/genero/${id}`)
     .then(response => response.json())
     .then(data => {
         for (const genero of data) {
@@ -82,8 +82,8 @@ function idUsuario() {
 
 async function agregarAlCarrito(peliculaId, usuarioId, precio) {
     try {
-        const response = await fetch(`http://localhost:3000/carrito`, {
-        // const response = await fetch(`${BACKEND_URL}/carrito`, {
+        // const response = await fetch(`http://localhost:3000/carrito`, {
+        const response = await fetch(`${BACKEND_URL}/carrito`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ usuarioId, psId: peliculaId, precio: precio })
