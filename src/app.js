@@ -4,18 +4,18 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-// const path = require('path');
-// app.use(express.static(path.join(__dirname, '../')));
+const path = require('path');
+app.use(express.static(path.join(__dirname, '../')));
 
-const corsOptions = {
-    origin: 'https://owlflix.vercel.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-    exposedHeaders: ['Authorization']
-};
+// const corsOptions = {
+//     origin: 'https://owlflix.vercel.app',
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true,
+//     exposedHeaders: ['Authorization']
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(express.json());
 
 const peliculaRouter = require('./routers/peliculaRouter');
@@ -36,7 +36,7 @@ app.use('/peliculas-series', peliSeriesRouter);
 
 module.exports = app;
 
-// const port = 3000;
-// app.listen(port, () => {
-//     console.log(`Server corriendo en http://localhost:${port}`);
-// });
+const port = 3000;
+app.listen(port, () => {
+    console.log(`Server corriendo en http://localhost:${port}`);
+});
