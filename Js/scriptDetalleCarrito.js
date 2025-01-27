@@ -34,7 +34,7 @@ if (carritoJSON) {
         p.textContent = `${item.TITULO_PS} (${item.CANTIDAD}) - $${item.PRECIO}`;
         productosDiv.appendChild(p);
 
-        total += parseFloat(item.precio);
+        total += parseFloat(item.PRECIO);
     });
 
     if (totalConDescuento) {
@@ -160,7 +160,6 @@ function idUsuario() {
 }
 
 async function comprobante(userId, nombreCliente) {
-
     if (!carrito || !userId) {
         alert("Error: No se pudo completar la compra.");
         return;
